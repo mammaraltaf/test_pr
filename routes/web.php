@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 /*Frontend Routes*/
-//Route::get('/', function () { return view('frontend\index'); })->name('frontend.home');
+Route::get('/', function () { return view('frontend\index'); })->name('frontend.home');
 Route::get('/pricing', function () { return view('frontend\pricing'); })->name('frontend.pricing');
 Route::get('/newshub', function () { return view('frontend\newshub'); })->name('frontend.newshub');
 Route::get('/blog', function () { return view('frontend\blog'); })->name('frontend.blog');
@@ -52,7 +52,6 @@ Route::get('/terms-of-service', function () { return view('frontend\termsOfServi
 Route::get('/login', function () { return view('auth.login'); })->name('login');
 
 
-Route::get('/', [EditorController::class,'index'])->name('user.newPressRelease');
-Route::post('/', [EditorController::class,'store'])->name('user.newPressReleaseStore');
+
 
 
