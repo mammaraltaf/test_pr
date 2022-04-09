@@ -58,7 +58,15 @@ class EditorController extends Controller
             // $image = self::uploadImagenew();
 //            $imageName = time() . '.' . request()->image->getClientOriginalExtension();
 //            $request = request()->image->move(public_path('Upload_images'), $imageName);
-            NewPressRelease::insertGetId(array('user_id' => Auth::user()->id, 'title' => $newPressRelease['title'], 'description' => $newPressRelease['description'], 'created_at' => new DateTime, 'updated_at' => new DateTime));
+
+            NewPressRelease::insertGetId(array('user_id' => Auth::user()->id,
+                                                'title' => $newPressRelease['title'],
+                                                'description' => $newPressRelease['description'],
+                                                'schedule_press_release_date_time' => $newPressRelease['schedule_press_release_date_time'],
+                                                'status' => 1,
+                                                'created_at' => new DateTime,
+                                                'updated_at' => new DateTime));
+
             $newPressRelease['successMsg'] = 'Press Release was successfully created!';
 
             return Redirect::route('user.newPressRelease')->withInput($newPressRelease);

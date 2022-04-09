@@ -27,7 +27,7 @@
                 <tr>
                     <td>{{$pressrel->title}}</td>
 {{--                    <td>{{$pressrel->description}}</td>--}}
-                    <td><span class="badge badge-pill badge-warning">{{$pressrel->schedule_press_release_date_time}}</span></td>
+                    <td><span class="badge badge-pill badge-primary">{{$pressrel->schedule_press_release_date_time}}</span></td>
                     @if ($pressrel->status == '0')
                         <td><span class="badge badge-pill badge-info">Draft</span></td>
                     @elseif ($pressrel->status == '1')
@@ -36,7 +36,7 @@
                         <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                     <td>
-                        <button type="button" class="btn btn-info btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Edit</button>
+                        <button type="button" class="btn btn-primary btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Edit</button>
                         <button type="button" class="btn btn-danger btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Delete</button>
                     </td>
                 </tr>

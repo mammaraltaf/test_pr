@@ -31,7 +31,8 @@
                                         <br>
                                         <div class="col-md-4">
                                             <label for="" class="form-label">Schedule Press Release Date/Time <span style="color:green">(Optional)</span></label>
-                                            <input class="form-control form-control-solid" value="{{ now()->toDateTimeString() }}"readable placeholder="Pick date" id="kt_datepicker_10"/>
+                                            <input class="form-control form-control-solid" name="schedule_press_release_date_time" readable placeholder="Pick date" id="kt_datepicker_10"/>
+{{--                                            <input class="form-control form-control-solid" name="schedule_press_release_date_time" value="{{ now()->toDateTimeString() }}"readable placeholder="Pick date" id="kt_datepicker_10"/>--}}
                                         </div>
                                     <div class="col-md-1"></div>
 
@@ -42,7 +43,7 @@
                                     <div class="col-md-1"></div>
                                     <div class="col-md-10">
                                         <label for="" class="form-label">Description<span style="color:red">*</span></label>
-                                        <textarea class="summernote d-none"  name="description"></textarea>
+                                        <textarea class="summernote d-none" name="description"></textarea>
                                     </div>
                                     <div class="col-md-1"></div>
 
@@ -50,10 +51,10 @@
 
                             </div>
                             <div class="form-group text-center">
-                                <button class="btn btn-primary" type="submit" value="Save as draft">Save as draft</button>
-                                <button class="btn btn-info" type="submit" value="Preview">Preview</button>
-                                <button class="btn btn-success" type="submit" data-toggle="modal" data-target="#schedule_press_release_date_time" value="Schedule Press Release Time/Date">Schedule Press Release Time/Date</button>
-                                <button class="btn btn-success" type="submit" value="Ready to Publish">Ready to Publish</button>
+                                <button class="btn btn-primary btn-sm" type="submit" value="Save as draft">Save as draft</button>
+                                <button class="btn btn-info btn-sm" type="submit" value="Preview">Preview</button>
+{{--                                <button class="btn btn-success btn-sm" type="submit" data-toggle="modal" data-target="#schedule_press_release_date_time" value="Schedule Press Release Time/Date">Schedule Press Release Time/Date</button>--}}
+                                <button class="btn btn-success btn-sm" type="submit" value="Ready to Publish">Ready to Publish</button>
                             </div>
                         </form>
 
