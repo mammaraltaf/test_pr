@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\NewPressRelease;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $pressReleases = NewPressRelease::all();
+
+        return view('user.pages.manageContent',['pressReleases'=>$pressReleases]);
     }
     /**
      * Show the application dashboard.

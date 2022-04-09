@@ -9,15 +9,45 @@
 @endsection
 
 @section('content')
+    <!--begin::Header-->
+    <div class="card-header border-0 pt-5">
+        <h2 class="card-title align-items-start flex-column">
+            <span class="card-label fw-bolder fs-3 mb-1">New Press Release</span>
+        </h2>
+
+    </div>
+    <br>
+    <!--end::Header-->
                         <form method="post" action="" enctype="multipart/form-data">
                             @csrf
+
                             <div class="form-group">
-                                <label>Title</label>
-                                <input type="text" name="title" class="form-control" placeholder="Enter Title Here" required/>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                        <div class="col-md-6">
+                                            <label for="" class="form-label">Press Release Title<span style="color:red">*</span></label>
+                                            <input type="text" name="title" class="form-control" placeholder="Enter Title Here" required/>
+                                        </div>
+                                        <br>
+                                        <div class="col-md-4">
+                                            <label for="" class="form-label">Schedule Press Release Date/Time <span style="color:green">(Optional)</span></label>
+                                            <input class="form-control form-control-solid" value="{{ now()->toDateTimeString() }}"readable placeholder="Pick date" id="kt_datepicker_10"/>
+                                        </div>
+                                    <div class="col-md-1"></div>
+
                             </div>
+                            <br>
                             <div class="form-group">
-                                {{--                            <label><strong>Description :</strong></label>--}}
-                                <textarea class="summernote d-none"  name="description"></textarea>
+                                <div class="row">
+                                    <div class="col-md-1"></div>
+                                    <div class="col-md-10">
+                                        <label for="" class="form-label">Description<span style="color:red">*</span></label>
+                                        <textarea class="summernote d-none"  name="description"></textarea>
+                                    </div>
+                                    <div class="col-md-1"></div>
+
+                                </div>
+
                             </div>
                             <div class="form-group text-center">
                                 <button class="btn btn-primary" type="submit" value="Save as draft">Save as draft</button>

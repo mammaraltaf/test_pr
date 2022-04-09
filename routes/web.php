@@ -23,7 +23,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('new-press-release', [EditorController::class,'index'])->name('user.newPressRelease');
     Route::post('new-press-release', [EditorController::class,'store'])->name('user.newPressReleaseStore');
     Route::get('manage-content', [HomeController::class,'index'])->name('user.manageContent');
-    Route::post('manage-content', [HomeController::class,'store'])->name('user.manageContentStore');
+/*    Route::post('manage-content', [HomeController::class,'store'])->name('user.manageContentStore');*/
     Route::get('profile-setting', [HomeController::class,'index'])->name('user.profile');
     Route::post('profile-setting', [HomeController::class,'store'])->name('user.profileStore');
 
