@@ -17,26 +17,28 @@ use App\Http\Controllers\EditorController;
 
 Auth::routes();
 
-/*User Routes*/
-//Route::group(['prefix' => 'user','middleware' => 'auth'], function () {
 Route::group(['middleware' => 'auth'], function () {
+    /*User Routes*/
     Route::get('/home', [HomeController::class, 'index'])->name('user.home');
     Route::get('new-press-release', [EditorController::class,'index'])->name('user.newPressRelease');
     Route::post('new-press-release', [EditorController::class,'store'])->name('user.newPressReleaseStore');
     Route::get('manage-content', [HomeController::class,'index'])->name('user.manageContent');
     Route::post('manage-content', [HomeController::class,'store'])->name('user.manageContentStore');
-    Route::get('profile', [HomeController::class,'index'])->name('user.profile');
-    Route::post('profile', [HomeController::class,'store'])->name('user.profileStore');
+    Route::get('profile-setting', [HomeController::class,'index'])->name('user.profile');
+    Route::post('profile-setting', [HomeController::class,'store'])->name('user.profileStore');
+
+
+    /*Admin Routes*/
+    Route::get('/admin/home', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.home');
+    Route::get('/admin/manage-content', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.manageContent');
+    Route::get('/admin/new-press-release', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.newPressRelease');
+    Route::get('/admin/profile-setting', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.profileSetting');
+    Route::get('/admin/payments', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.payments');
+    Route::get('/admin/invoices', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.invoices');
+    Route::get('/admin/customers', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.customers');
+    Route::get('/admin/rss-configuration', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.rssConfiguration');
+
 });
-
-/*Admin Routes*/
-//Route::group(['prefix' => 'admin', 'middleware' => ['auth','is_admin']], function () {
-//Route::group(['middleware' => ['auth','is_admin']], function () {
-//    Route::get('/home', [AdminController::class, 'index'])->name('admin.home');
-//});
-
-
-
 
 /*Frontend Routes*/
 Route::get('/', function () { return view('frontend\index'); })->name('frontend.home');

@@ -42,45 +42,45 @@
 
                     @if((auth()->user()->is_admin))
                         <div class="menu-item">
-                            <a class="menu-link active {{ Route::currentRouteNamed('admin.home') ? 'active' : '' }}" href="{{route('admin.home')}}" title="Home">
+                            <a class="menu-link {{ Route::currentRouteNamed('admin.home') ? 'active' : '' }}" href="{{route('admin.home')}}" title="Home">
                                 <span class="menu-title">Home</span>
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link " href="#" title="Home">
+                            <a class="menu-link  {{ Route::currentRouteNamed('admin.manageContent') ? 'active' : '' }}" href="{{route('admin.manageContent')}}">
                                 <span class="menu-title">Manage Content</span>
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="#" title="Home">
+                            <a class="menu-link  {{ Route::currentRouteNamed('admin.newPressRelease') ? 'active' : '' }}" href="{{route('admin.newPressRelease')}}" >
                                 <span class="menu-title">New Press Release</span>
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="#" title="Home">
+                            <a class="menu-link  {{ Route::currentRouteNamed('admin.profileSetting') ? 'active' : '' }}" href="{{route('admin.profileSetting')}}" >
                                 <span class="menu-title">Profile Settings</span>
                             </a>
                         </div>
                         <div class="menu-item">
-                            <a class="menu-link" href="">
+                            <a class="menu-link  {{ Route::currentRouteNamed('admin.payments') ? 'active' : '' }}" href="{{route('admin.payments')}}" >
                                 <span class="menu-title">Payments</span>
                             </a>
                         </div>
 
                         <div class="menu-item">
-                            <a class="menu-link" href="">
+                            <a class="menu-link  {{ Route::currentRouteNamed('admin.invoices') ? 'active' : '' }}" href="{{route('admin.invoices')}}" >
                                 <span class="menu-title">Invoice</span>
                             </a>
                         </div>
 
                         <div class="menu-item">
-                            <a class="menu-link" href="">
+                            <a class="menu-link  {{ Route::currentRouteNamed('admin.customers') ? 'active' : '' }}" href="{{route('admin.customers')}}">
                                 <span class="menu-title">Customers</span>
                             </a>
                         </div>
 
                         <div class="menu-item">
-                            <a class="menu-link" href="">
+                            <a class="menu-link  {{ Route::currentRouteNamed('admin.rssConfiguration') ? 'active' : '' }}" href="{{route('admin.rssConfiguration')}}">
                                 <span class="menu-title">RSS Configuration</span>
                             </a>
                         </div>
@@ -88,23 +88,26 @@
 
                     @if(!(auth()->user()->is_admin))
                             <div class="menu-item">
-{{--                                <a class="menu-link {{ Route::currentRouteNamed('user.home') ? 'active' : '' }}" href="{{route('user.home')}}" title="Home">--}}
+                                <a class="menu-link {{ Route::currentRouteNamed('user.home') ? 'active' : '' }}" href="{{route('user.home')}}" title="Home">
                                     <span class="menu-title">Home</span>
                                 </a>
 
                             </div>
+
                             <div class="menu-item">
-{{--                                <a class="menu-link {{ Route::currentRouteNamed('newArticle') ? 'active' : '' }}" href="{{route('newArticle')}}" title="Home">--}}
-                                    <span class="menu-title">Manage Content</span>
-                                </a>
-                            </div>
-                            <div class="menu-item">
-                                <a class="menu-link" href="#" title="">
+                                <a class="menu-link {{ Route::currentRouteNamed('user.newPressRelease') ? 'active' : '' }}" href="{{route('user.newPressRelease')}}" title="Home">
                                     <span class="menu-title">New Press Release</span>
                                 </a>
                             </div>
+
                             <div class="menu-item">
-                                <a class="menu-link" href="#" title="">
+                                <a class="menu-link {{ Route::currentRouteNamed('user.manageContent') ? 'active' : '' }}" href="{{route('user.manageContent')}}" title="Home">
+                                    <span class="menu-title">Manage Content</span>
+                                </a>
+                            </div>
+
+                            <div class="menu-item">
+                                <a class="menu-link {{ Route::currentRouteNamed('user.profile') ? 'active' : '' }}" href="{{route('user.profile')}}" title="Home">
                                     <span class="menu-title">Profile Settings</span>
                                 </a>
                             </div>
