@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EditorController;
+use App\Http\Controllers\Auth\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,11 +27,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('manage-content', [HomeController::class,'index'])->name('user.manageContent');
 /*    Route::post('manage-content', [HomeController::class,'store'])->name('user.manageContentStore');*/
 //    Route::get('profile-setting', [HomeController::class,'index'])->name('user.profile');
-    Route::get('/profile-setting', function () { return view('user.pages.profileSetting'); })->name('user.profileSetting');
-    Route::get('/profile-view', function () { return view('user.pages.profileView'); })->name('user.profileView');
-    Route::get('/profile-view', function () { return view('user.pages.profileView'); })->name('user.profileView');
-//    Route::post('profile-setting', [HomeController::class,'store'])->name('user.profileStore');
 
+    /* User Profile Routes*/
+    Route::get('/profile-view', function () { return view('user.pages.profileView'); })->name('user.profileView');
+    Route::get('/profile-setting', function () { return view('user.pages.profileSetting'); })->name('user.profileSetting');
+    Route::post('/profile-setting', [RegisterController::class,'update'])->name('user.profileSettingUpdate');
+
+//    Route::post('profile-setting', [HomeController::class,'store'])->name('user.profileStore');
 
     /*Admin Routes*/
     Route::get('/admin/home', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.home');

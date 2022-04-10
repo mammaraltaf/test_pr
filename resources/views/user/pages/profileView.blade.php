@@ -63,37 +63,12 @@
             <!--begin::Input group-->
             <div class="row mb-7">
                 <!--begin::Label-->
-                <label class="col-lg-4 fw-bold text-muted">Contact Phone
-                    <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Phone number must be active"></i></label>
-                <!--end::Label-->
-                <!--begin::Col-->
-                <div class="col-lg-8 d-flex align-items-center">
-                    <span class="fw-bolder fs-6 text-gray-800 me-2">044 3276 454 935</span>
-                </div>
-                <!--end::Col-->
-            </div>
-            <!--end::Input group-->
-            <!--begin::Input group-->
-            <div class="row mb-7">
-                <!--begin::Label-->
-                <label class="col-lg-4 fw-bold text-muted">Company Site</label>
-                <!--end::Label-->
-                <!--begin::Col-->
-                <div class="col-lg-8">
-                    <a href="#" class="fw-bold fs-6 text-gray-800 text-hover-primary">keenthemes.com</a>
-                </div>
-                <!--end::Col-->
-            </div>
-            <!--end::Input group-->
-            <!--begin::Input group-->
-            <div class="row mb-7">
-                <!--begin::Label-->
                 <label class="col-lg-4 fw-bold text-muted">Country
                     <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i></label>
                 <!--end::Label-->
                 <!--begin::Col-->
                 <div class="col-lg-8">
-                    <span class="fw-bolder fs-6 text-gray-800">Germany</span>
+                    <span class="fw-bolder fs-6 text-gray-800">{{auth()->user()->country}}</span>
                 </div>
                 <!--end::Col-->
             </div>
@@ -101,25 +76,13 @@
             <!--begin::Input group-->
             <div class="row mb-7">
                 <!--begin::Label-->
-                <label class="col-lg-4 fw-bold text-muted">Communication</label>
+                <label class="col-lg-4 fw-bold text-muted">Timezone</label>
                 <!--end::Label-->
                 <!--begin::Col-->
                 <div class="col-lg-8">
-                    <span class="fw-bolder fs-6 text-gray-800">Email, Phone</span>
+                    <span class="fw-bolder fs-6 text-gray-800">{{auth()->user()->timezone}}</span>
                 </div>
                 <!--end::Col-->
-            </div>
-            <!--end::Input group-->
-            <!--begin::Input group-->
-            <div class="row mb-10">
-                <!--begin::Label-->
-                <label class="col-lg-4 fw-bold text-muted">Allow Changes</label>
-                <!--begin::Label-->
-                <!--begin::Label-->
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">Yes</span>
-                </div>
-                <!--begin::Label-->
             </div>
             <!--end::Input group-->
         </div>
