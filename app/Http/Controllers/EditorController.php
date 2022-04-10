@@ -87,6 +87,44 @@ class EditorController extends Controller
         //
     }
 
+    public function editButtonstore(Request $request)
+    {
+        try {
+            $newPressRelease = $request->all();
+            $rules = array(
+                'title' => 'required',
+                'description' => 'required',
+            );
+            // Passing input with defined rules through validator class
+            $validation = Validator::make($newPressRelease, $rules);
+            //if validation fails
+            if ($validation->fails()) {
+                //redirect back with validation errors
+                return Redirect::back()->withErrors($validation);
+            }
+            // $image = self::uploadImagenew();
+//            $imageName = time() . '.' . request()->image->getClientOriginalExtension();
+//            $request = request()->image->move(public_path('Upload_images'), $imageName);
+
+            NewPressRelease::insertGetId(array('user_id' => Auth::user()->id,
+                'title' => $newPressRelease['title'],
+                'description' => $newPressRelease['description'],
+                'schedule_press_release_date_time' => $newPressRelease['schedule_press_release_date_time'],
+                'status' => 0,
+                'created_at' => new DateTime,
+                'updated_at' => new DateTime));
+
+            $newPressRelease['successMsg'] = 'Press Release was successfully created!';
+
+            return Redirect::route('user.newPressRelease')->withInput($newPressRelease);
+
+        } catch (\Exception $e) {
+            echo 'Exception Message: ' . $e->getMessage();
+        }
+    }
+
+
+
     /**
      * Show the form for editing the specified resource.
      *

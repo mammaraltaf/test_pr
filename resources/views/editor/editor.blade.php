@@ -18,7 +18,7 @@
     </div>
     <br>
     <!--end::Header-->
-                        <form method="post" action="" enctype="multipart/form-data">
+                        <form method="post" action="" id="pressReleaseTable" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -51,10 +51,11 @@
 
                             </div>
                             <div class="form-group text-center">
-                                <button class="btn btn-primary btn-sm" type="submit" value="Save as draft">Save as draft</button>
+                                <button class="btn btn-primary btn-sm" id="save-as-draft" type="submit" value="Save as draft">Save as draft</button>
                                 <button class="btn btn-info btn-sm" type="submit" value="Preview">Preview</button>
 {{--                                <button class="btn btn-success btn-sm" type="submit" data-toggle="modal" data-target="#schedule_press_release_date_time" value="Schedule Press Release Time/Date">Schedule Press Release Time/Date</button>--}}
-                                <button class="btn btn-success btn-sm" type="submit" value="Ready to Publish">Ready to Publish</button>
+                                <button class="btn btn-success btn-sm" id="ready-to-publish" type="submit" value="Ready to Publish">Ready to Publish</button>
+                            </div>
                             </div>
                         </form>
 
@@ -93,16 +94,63 @@
 @endsection
 
 @section('script')
-
-
-
-<script type="text/javascript">
+    <script type="text/javascript">
 
         $("#kt_datepicker_10").flatpickr({
             enableTime: true,
             dateFormat: "Y-m-d H:i",
         });
 
+        $(document).ready(function() {
+            $("#ready-to-publish").click(function(e) {
+                e.preventDefault();
 
-</script>
+                swal({
+                    title: "Are you sure?",
+                    text: "Save Press Release?",
+                    icon: "info",
+                    buttons: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        var data = $('#pressReleaseTable').serialize()+'&complete_status=completed'
+                        $.ajax({
+                            type: 'POST',
+                            url: `{!! route('user.newPressReleaseStore') !!}`,
+                            data: data
+                        }).done(function(data) {
+                            swal("Press Release Posted for Admin Approval!", {
+                                icon: "success",
+                            });
+                            let pageRedirectUrl = `{!! url('manage-content') !!}`;
+                            window.location.href = pageRedirectUrl;
+                        }).fail(function(data) {
+                            // Optionally alert the user of an error here...
+                        });
+
+                    }
+                });
+            })
+            $("#save-as-draft").click(function(e) {
+                e.preventDefault();
+
+                        var data = $('#pressReleaseTable').serialize()
+                        $.ajax({
+                            type: 'POST',
+                            url: `{!! route('user.editButtonstore') !!}`,
+                            data: data
+                        }).done(function(data) {
+                            swal("PDF is ready!", {
+                                icon: "success",
+                            });
+
+                            let pageRedirectUrl = `{!! url('manage-content') !!}`;
+                            window.location.href = pageRedirectUrl;
+                        }).fail(function(data) {
+                            // Optionally alert the user of an error here...
+                        });
+
+                    })
+        });
+    </script>
+
 @endsection
