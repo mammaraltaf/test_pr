@@ -88,26 +88,26 @@
 
                     @if(!(auth()->user()->is_admin))
                             <div class="menu-item">
-                                <a class="menu-link {{ Route::currentRouteNamed('user.home') ? 'active' : '' }}" href="{{route('user.home')}}" title="Home">
+                                <a class="menu-link {{ Route::currentRouteNamed('user.home') ? 'active' : '' }}" href="{{route('user.home')}}">
                                     <span class="menu-title">Home</span>
                                 </a>
 
                             </div>
 
                             <div class="menu-item">
-                                <a class="menu-link {{ Route::currentRouteNamed('user.newPressRelease') ? 'active' : '' }}" href="{{route('user.newPressRelease')}}" title="Home">
+                                <a class="menu-link {{ Route::currentRouteNamed('user.newPressRelease') ? 'active' : '' }}" href="{{route('user.newPressRelease')}}" >
                                     <span class="menu-title">New Press Release</span>
                                 </a>
                             </div>
 
                             <div class="menu-item">
-                                <a class="menu-link {{ Route::currentRouteNamed('user.manageContent') ? 'active' : '' }}" href="{{route('user.manageContent')}}" title="Home">
+                                <a class="menu-link {{ Route::currentRouteNamed('user.manageContent') ? 'active' : '' }}" href="{{route('user.manageContent')}}">
                                     <span class="menu-title">Manage Content</span>
                                 </a>
                             </div>
 
                             <div class="menu-item">
-                                <a class="menu-link {{ Route::currentRouteNamed('user.profile') ? 'active' : '' }}" href="{{route('user.profile')}}" title="Home">
+                                <a class="menu-link {{ Route::currentRouteNamed('user.profileView') ? 'active' : '' }}" href="{{route('user.profileView')}}">
                                     <span class="menu-title">Profile Settings</span>
                                 </a>
                             </div>
