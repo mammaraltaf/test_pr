@@ -133,7 +133,8 @@ class EditorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $newPressRelease = NewPressRelease::find($id);
+        return view('editPressRelease', ['newPressRelease' => $newPressRelease]);
     }
 
     /**

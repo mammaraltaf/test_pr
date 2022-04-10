@@ -82,7 +82,6 @@ class RegisterController extends Controller
 
     public function update(Request $request)
     {
-        dd('here');
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -92,41 +91,28 @@ class RegisterController extends Controller
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $user = User::where('id',auth()->user()->id);
-        dd($request->all(),$user);
+        $userId = User::where('id',auth()->user()->id);
+        $user = User::find($userId);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->country = $request->country;
+        $user->timezone = $request->timezone;
+
         if ($request->hasfile('image')){
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension();
             $filename = md5(time()).'.'.$extension;
-            $file->move(public_path().'\imagineprofil',$filename);
+            $file->move(public_path().'\user\images',$filename);
             $user->image=$filename;
         } else {
             return $request;
-            $employee->image='';
+            $user->image='';
         }
 
-        if($employee->save()){
-            return redirect()->route('imageupload')->withSuccess('S-a incarcat cu success!');
+        if($user->save()){
+            return redirect()->route('user.profileView')->withSuccess('User Updated successfully!');
         }else{
-            return redirect()->route('imageupload')->withDanger('Nu s-a incarcat! A aparut o eroare.');
+            return redirect()->route('user.profileSetting')->withDanger('There was an error saving the user profile');
         }
-
-        $imageName = time().'.'.$request->avatar->extension();
-
-        /*
-                'name' => $data['name'],
-                    'email' => $data['email'],
-                    'password' => Hash::make($data['password']),
-                    'country' => $data['country'],
-                    'timezone' => $data['timezone'],*/
-
-        $request->image->move(public_path('images'), $imageName);
-
-        /* Store $imageName name in DATABASE from HERE */
-
-        return back()
-            ->with('success','You have successfully upload image.')
-            ->with('image',$imageName);
-
     }
 }
