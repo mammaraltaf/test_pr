@@ -36,8 +36,8 @@
                         <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                     <td>
-                        <button type="button" class="btn btn-primary btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Delete</button>
+                        <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Edit</a>
+                        <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
                     </td>
                 </tr>
                 @endforeach

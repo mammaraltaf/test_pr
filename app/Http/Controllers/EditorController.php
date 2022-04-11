@@ -42,6 +42,39 @@ class EditorController extends Controller
     /*stored press release data into database*/
     public function store(Request $request)
     {
+/*        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+
+        $description = $request->description;
+        $dom = new \DomDocument();
+        $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('imageFile');
+
+        foreach($imageFile as $item => $image){
+            $data = $img->getAttribute('src');
+            list($type, $data) = explode(';', $data);
+            list(, $data)      = explode(',', $data);
+            $imgeData = base64_decode($data);
+            $image_name= "/upload/" . time().$item.'.png';
+            $path = public_path() . $image_name;
+            file_put_contents($path, $imgeData);
+
+            $image->removeAttribute('src');
+            $image->setAttribute('src', $image_name);
+        }
+
+        $description = $dom->saveHTML();
+        $fileUpload = new NewPressRelease;
+        $fileUpload->user_id = auth()->user()->id;
+        $fileUpload->title = $request->title;
+        $fileUpload->description = $description;
+        $fileUpload->save();
+
+        dd($description);*/
+
+
         try {
             $newPressRelease = $request->all();
             $rules = array(
@@ -133,8 +166,8 @@ class EditorController extends Controller
      */
     public function edit($id)
     {
-        $newPressRelease = NewPressRelease::find($id);
-        return view('editPressRelease', ['newPressRelease' => $newPressRelease]);
+        $editPressRelease = NewPressRelease::find($id);
+        return view('editor.editPressRelease', ['editPressRelease' => $editPressRelease]);
     }
 
     /**
@@ -157,6 +190,7 @@ class EditorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        NewPressRelease::destroy($id);
+        return redirect(route('user.manageContent'))->with('status', 'Press Release Deleted!');
     }
 }

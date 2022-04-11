@@ -26,12 +26,12 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-6">
                     <label for="" class="form-label">Press Release Title<span style="color:red">*</span></label>
-                    <input type="text" name="title" class="form-control" placeholder="Enter Title Here" value="{{$newPressRelease->title}}" required/>
+                    <input type="text" name="title" class="form-control" placeholder="Enter Title Here" value="{{$editPressRelease->title}}" required/>
                 </div>
                 <br>
                 <div class="col-md-4">
                     <label for="" class="form-label">Schedule Press Release Date/Time <span style="color:green">(Optional)</span></label>
-                    <input class="form-control form-control-solid" value="{{$newPressRelease->schedule_press_release_date_time}}" name="schedule_press_release_date_time" readable placeholder="Pick date" id="kt_datepicker_10"/>
+                    <input class="form-control form-control-solid" value="{{$editPressRelease->schedule_press_release_date_time}}" name="schedule_press_release_date_time" readable placeholder="Pick date" id="kt_datepicker_10"/>
                 </div>
                 <div class="col-md-1"></div>
 
@@ -42,7 +42,7 @@
                     <div class="col-md-1"></div>
                     <div class="col-md-10">
                         <label for="" class="form-label">Description<span style="color:red">*</span></label>
-                        <textarea class="summernote d-none" name="description">{{$newPressRelease->description}}</textarea>
+                        <textarea class="summernote d-none" name="description">{{$editPressRelease->description}}</textarea>
                     </div>
                     <div class="col-md-1"></div>
 
