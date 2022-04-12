@@ -68,6 +68,9 @@ Route::get('/terms-of-service', function () { return view('frontend\termsOfServi
 /*Login User*/
 Route::get('/login', function () { return view('auth.login'); })->name('login');
 
+/*Invoice*/
+Route::get('/invoice', function () { return view('invoice\invoice'); })->name('pasyment.invoice');
+
 
 
 
