@@ -139,7 +139,7 @@
                             url: `{!! route('user.editButtonstore') !!}`,
                             data: data
                         }).done(function(data) {
-                            swal("PDF is ready!", {
+                            swal("Draft Saved Successfully!!", {
                                 icon: "success",
                             });
 

@@ -42,25 +42,29 @@ class EditorController extends Controller
     /*stored press release data into database*/
     public function store(Request $request)
     {
-/*        $this->validate($request, [
+        $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
         ]);
-
         $description = $request->description;
         $dom = new \DomDocument();
         $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-        $imageFile = $dom->getElementsByTagName('imageFile');
+        $imageFile = $dom->getElementsByTagName('img');
+
+        $path = storage_path('upload/');
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
 
         foreach($imageFile as $item => $image){
-            $data = $img->getAttribute('src');
+            $data = $image->getAttribute('src');
             list($type, $data) = explode(';', $data);
             list(, $data)      = explode(',', $data);
             $imgeData = base64_decode($data);
+
             $image_name= "/upload/" . time().$item.'.png';
             $path = public_path() . $image_name;
             file_put_contents($path, $imgeData);
-
             $image->removeAttribute('src');
             $image->setAttribute('src', $image_name);
         }
@@ -71,11 +75,11 @@ class EditorController extends Controller
         $fileUpload->title = $request->title;
         $fileUpload->description = $description;
         $fileUpload->save();
+        dd($fileUpload->toArray(),$description);
+//        dd($description);
 
-        dd($description);*/
 
-
-        try {
+/*        try {
             $newPressRelease = $request->all();
             $rules = array(
                 'title' => 'required',
@@ -106,7 +110,7 @@ class EditorController extends Controller
 
         } catch (\Exception $e) {
             echo 'Exception Message: ' . $e->getMessage();
-        }
+        }*/
     }
 
     /**
