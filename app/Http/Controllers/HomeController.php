@@ -31,8 +31,15 @@ class HomeController extends Controller
 
     public function manageContent(){
         $pressReleases = NewPressRelease::where('user_id',Auth::user()->id)->get();
-        return view('user.pages.manageContent',['pressReleases'=>$pressReleases]);
+        $pressReleasesDraft = NewPressRelease::where('user_id',Auth::user()->id)->where('status',0)->get();
+        $pressReleasesPending = NewPressRelease::where('user_id',Auth::user()->id)->where('status',1)->get();
+        $pressReleasesPosted = NewPressRelease::where('user_id',Auth::user()->id)->where('status',2)->get();
+        return view('user.pages.manageContent',['pressReleases'=>$pressReleases,
+                                                    'pressReleasesDraft'=>$pressReleasesDraft,
+                                                    'pressReleasesPending'=>$pressReleasesPending,
+                                                    'pressReleasesPosted'=>$pressReleasesPosted]);
     }
+
     /**
      * Show the application dashboard.
      *

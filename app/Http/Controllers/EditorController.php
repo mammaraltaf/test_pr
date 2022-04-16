@@ -18,14 +18,11 @@ class EditorController extends Controller
      */
     public function index()
     {
-//        return view('user.pages.newArticle');
         return view('editor.editor');
     }
 
-    public function adminindex()
-    {
-//        return view('user.pages.newArticle');
-        return view('editor.editor');
+    public function adminStore(){
+
     }
     /**
      * Show the form for creating a new resource.
@@ -76,15 +73,13 @@ class EditorController extends Controller
         }
 
         $description = $dom->saveHTML();
-        $fileUpload = new NewPressRelease;
-        $fileUpload->user_id = auth()->user()->id;
-        $fileUpload->title = $request->title;
-        $fileUpload->description = $description;
-        $fileUpload->save();
-//        dd($fileUpload->toArray(),$description);
-//        dd($description);
-
-
+        $newPressRelease = new NewPressRelease;
+        $newPressRelease->user_id = auth()->user()->id;
+        $newPressRelease->title = $request->title;
+        $newPressRelease->schedule_press_release_date_time = (isset($request->schedule_press_release_date_time)?$request->schedule_press_release_date_time:NULL);
+        $newPressRelease->status = 1;
+        $newPressRelease->description = $description;
+        $newPressRelease->save();
 /*        try {
             $newPressRelease = $request->all();
             $rules = array(
