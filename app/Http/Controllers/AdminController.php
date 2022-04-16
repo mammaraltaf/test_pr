@@ -20,6 +20,35 @@ class AdminController extends Controller
         return view('adminHome');
     }
 
+    public function manageContentIndex(){
+        return view('admin.pages.manageContent');
+    }
+
+    public function newPressReleaseIndex(){
+        return view('admin.pages.newPressRelease');
+    }
+
+    public function profileSettingIndex(){
+        return view('admin.pages.profileSettings');
+    }
+
+    public function paymentsIndex(){
+        return view('admin.pages.payments');
+    }
+
+    public function invoicesIndex(){
+        return view('admin.pages.invoices');
+    }
+
+    public function customersIndex(){
+        return view('admin.pages.customers');
+    }
+
+    public function rssConfigurationindex(){
+        return view('admin.pages.rssConfigurations');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

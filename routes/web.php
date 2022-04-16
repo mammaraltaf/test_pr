@@ -40,19 +40,25 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile-setting', function () { return view('user.pages.profileSetting'); })->name('user.profileSetting');
     /*User Profile Edit*/
     Route::post('/profile-setting', [RegisterController::class,'update'])->name('user.profileSettingUpdate');
-
 //    Route::post('profile-setting', [HomeController::class,'store'])->name('user.profileStore');
 
     /*Admin Routes*/
     Route::get('/admin/home', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.home');
-    Route::get('/admin/manage-content', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.manageContent');
-    Route::get('/admin/new-press-release', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.newPressRelease');
-    Route::get('/admin/profile-setting', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.profileSetting');
-    Route::get('/admin/payments', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.payments');
-    Route::get('/admin/invoices', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.invoices');
-    Route::get('/admin/customers', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.customers');
-    Route::get('/admin/rss-configuration', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.rssConfiguration');
+    Route::get('/admin/manage-content', [AdminController::class, 'manageContentIndex'])->middleware('is_admin')->name('admin.manageContent');
+    Route::get('/admin/new-press-release', [EditorController::class,'adminIndex'])->middleware('is_admin')->name('admin.newPressRelease');
+    Route::get('/admin/profile-setting', [AdminController::class, 'profileSettingIndex'])->middleware('is_admin')->name('admin.profileSetting');
+    Route::get('/admin/payments', [AdminController::class, 'paymentsIndex'])->middleware('is_admin')->name('admin.payments');
+    Route::get('/admin/invoices', [AdminController::class, 'invoicesIndex'])->middleware('is_admin')->name('admin.invoices');
+    Route::get('/admin/customers', [AdminController::class, 'customersIndex'])->middleware('is_admin')->name('admin.customers');
+    Route::get('/admin/rss-configuration', [AdminController::class, 'rssConfigurationindex'])->middleware('is_admin')->name('admin.rssConfiguration');
 
+
+    /*Edit Press Release*/
+    Route::get('/admin/new-press-release', [EditorController::class,'adminEdit'])->middleware('is_admin')->name('admin.editPressRelease');
+    Route::get('edit-press-release/{id}', [EditorController::class,'edit'])->name('user.editPressRelease');
+    Route::post('/admin/edit-press-release/{id}', [EditorController::class,'update'])->name('user.editPressReleaseUpdate');
+    /*Delete Press Release*/
+    Route::get('/admin/delete-press-release/{id}', [EditorController::class,'destroy'])->name('user.deletePressRelease');
 });
 
 /*Frontend Routes*/

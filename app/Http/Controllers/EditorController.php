@@ -22,6 +22,11 @@ class EditorController extends Controller
         return view('editor.editor');
     }
 
+    public function adminindex()
+    {
+//        return view('user.pages.newArticle');
+        return view('editor.editor');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -173,6 +178,11 @@ class EditorController extends Controller
     {
         $editPressRelease = NewPressRelease::find($id);
         return view('editor.editPressRelease', ['editPressRelease' => $editPressRelease]);
+    }
+
+    public function adminEdit($id){
+        $editPressRelease = NewPressRelease::find($id);
+        return view('editor.editAdminPressRelease', ['editPressRelease' => $editPressRelease]);
     }
 
     /**
