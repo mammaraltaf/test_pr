@@ -30,7 +30,7 @@
     <div class="card-body py-3">
         <div class="tab-content">
             {{--All Datatable--}}
-            <table id="example" name="allTable" class="ui celled table" style="width:100%">
+            <table id="example" name="allTable" class="ui celled table allTable" style="width:100%">
                 <thead>
                 <tr>
                     <th>Title</th>
@@ -56,6 +56,7 @@
                         <td>
                             <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Edit</a>
                             <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
+
                         </td>
                     </tr>
                 @endforeach
@@ -71,7 +72,7 @@
                 </tfoot>
             </table>
             {{--Draft DataTable--}}
-            <table id="example" name="draftTable"  class="ui celled table d-none" style="width:100%">
+            <table id="example1" name="draftTable"  class="ui celled table draftTable d-none" style="width:100%">
                 <thead>
                 <tr>
                     <th>Title</th>
@@ -82,21 +83,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($pressReleases as $pressrel)
+                @foreach($pressReleasesDraft as $pressreldraft)
                     <tr>
-                        <td>{{$pressrel->title}}</td>
+                        <td>{{$pressreldraft->title}}</td>
                         {{--                    <td>{{$pressrel->description}}</td>--}}
                         <td><span class="badge badge-pill badge-primary">{{$pressrel->schedule_press_release_date_time}}</span></td>
-                        @if ($pressrel->status == '0')
+                        @if ($pressreldraft->status == '0')
                             <td><span class="badge badge-pill badge-info">Draft</span></td>
-                        @elseif ($pressrel->status == '1')
+                        @elseif ($pressreldraft->status == '1')
                             <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                        @elseif ($pressrel->status == '0')
+                        @elseif ($pressreldraft->status == '0')
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
-                            <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Edit</a>
-                            <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
+                            <a href="{{url('/edit-press-release',$pressreldraft->id)}}" class="btn btn-primary btn-sm" id="{{$pressreldraft->id}}" data-toggle="tooltip">Edit</a>
+                            <a href="{{url('/delete-press-release',$pressreldraft->id)}}" class="btn btn-danger btn-sm" id="{{$pressreldraft->id}}" data-toggle="tooltip">Delete</a>
                         </td>
                     </tr>
                 @endforeach
@@ -112,7 +113,7 @@
                 </tfoot>
             </table>
             {{--Pending DataTable--}}
-            <table id="example" name="pendingTable" class="ui celled table d-none" style="width:100%">
+            <table id="example2" name="pendingTable" class="ui celled table pendingTable d-none" style="width:100%">
                 <thead>
                 <tr>
                     <th>Title</th>
@@ -123,21 +124,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($pressReleases as $pressrel)
+                @foreach($pressReleasesPending as $pressrelpending)
                     <tr>
-                        <td>{{$pressrel->title}}</td>
+                        <td>{{$pressrelpending->title}}</td>
                         {{--                    <td>{{$pressrel->description}}</td>--}}
                         <td><span class="badge badge-pill badge-primary">{{$pressrel->schedule_press_release_date_time}}</span></td>
-                        @if ($pressrel->status == '0')
+                        @if ($pressrelpending->status == '0')
                             <td><span class="badge badge-pill badge-info">Draft</span></td>
-                        @elseif ($pressrel->status == '1')
+                        @elseif ($pressrelpending->status == '1')
                             <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                        @elseif ($pressrel->status == '0')
+                        @elseif ($pressrelpending->status == '0')
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
-                            <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Edit</a>
-                            <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
+                            <a href="{{url('/edit-press-release',$pressrelpending->id)}}" class="btn btn-primary btn-sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Edit</a>
+                            <a href="{{url('/delete-press-release',$pressrelpending->id)}}" class="btn btn-danger btn-sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Delete</a>
                         </td>
                     </tr>
                 @endforeach
@@ -153,7 +154,7 @@
                 </tfoot>
             </table>
             {{--Posted DataTable--}}
-            <table id="example" name="postedTable" class="ui celled table d-none" style="width:100%">
+            <table id="example3" name="postedTable" class="ui celled table postedTable d-none" style="width:100%">
                 <thead>
                 <tr>
                     <th>Title</th>
@@ -164,21 +165,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($pressReleases as $pressrel)
+                @foreach($pressReleasesPosted as $pressrelposted)
                     <tr>
-                        <td>{{$pressrel->title}}</td>
+                        <td>{{$pressrelposted->title}}</td>
                         {{--                    <td>{{$pressrel->description}}</td>--}}
                         <td><span class="badge badge-pill badge-primary">{{$pressrel->schedule_press_release_date_time}}</span></td>
-                        @if ($pressrel->status == '0')
+                        @if ($pressrelposted->status == '0')
                             <td><span class="badge badge-pill badge-info">Draft</span></td>
-                        @elseif ($pressrel->status == '1')
+                        @elseif ($pressrelposted->status == '1')
                             <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                        @elseif ($pressrel->status == '2')
+                        @elseif ($pressrelposted->status == '2')
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
-                            <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Edit</a>
-                            <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
+                            <a href="{{url('/edit-press-release',$pressrelposted->id)}}" class="btn btn-primary btn-sm" id="{{$pressrelposted->id}}" data-toggle="tooltip">Edit</a>
+                            <a href="{{url('/delete-press-release',$pressrelposted->id)}}" class="btn btn-danger btn-sm delete" id="{{$pressrelposted->id}}" data-toggle="tooltip">Delete</a>
                         </td>
                     </tr>
                 @endforeach
@@ -204,7 +205,73 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#example').DataTable();
-        } );
+            // Hide div by setting display to none
+            $("#allTab").click(function(){
+                $(".allTable").removeClass('d-none');
+                $(".postedTable").addClass('d-none');
+                $(".draftTable").addClass('d-none');
+                $(".pendingTable").addClass('d-none');
+                $('#example1').DataTable().destroy();
+                $('#example').DataTable();
+                $('#example2').DataTable().destroy();
+                $('#example3').DataTable().destroy();
+            });
 
+            // Show div by removing inline display none style rule
+            $("#draftTab").click(function(){
+                $(".postedTable").addClass('d-none');
+                $(".allTable").addClass('d-none');
+                $(".draftTable").removeClass('d-none');
+                $(".pendingTable").addClass('d-none');
+                $('#example').DataTable().destroy();
+                $('#example1').DataTable();
+                $('#example2').DataTable().destroy();
+                $('#example3').DataTable().destroy();
+
+            });
+
+            // Toggle div display
+            $("#pendingTab").click(function(){
+                $(".postedTable").addClass('d-none');
+                $(".allTable").addClass('d-none');
+                $(".draftTable").addClass('d-none');
+                $(".pendingTable").removeClass('d-none');
+                $('#example').DataTable().destroy();
+                $('#example1').DataTable().destroy();
+                $('#example2').DataTable();
+                $('#example3').DataTable().destroy();
+
+            });
+
+            $("#postedTab").click(function(){
+                $(".postedTable").removeClass('d-none');
+                $(".allTable").addClass('d-none');
+                $(".draftTable").addClass('d-none');
+                $(".pendingTable").addClass('d-none');
+                $('#example').DataTable().destroy();
+                $('#example1').DataTable().destroy();
+                $('#example2').DataTable().destroy();
+                $('#example3').DataTable();
+
+            });
+
+
+
+            /*            $('.delete').on('click', function (event) {
+                            event.preventDefault();
+                            const url = $(this).attr('href');
+                            swal({
+                                title: 'Are you sure?',
+                                text: 'This record and it`s details will be permanantly deleted!',
+                                icon: 'warning',
+                                buttons: ["Cancel", "Yes!"],
+                            }).then(function(value) {
+                                if (value) {
+                                    window.location.href = url;
+                                }
+                            });
+                        });*/
+
+        });
     </script>
 @endsection
