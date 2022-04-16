@@ -26,6 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('home');
+    }
+
+    public function manageContent(){
         $pressReleases = NewPressRelease::where('user_id',Auth::user()->id)->get();
         return view('user.pages.manageContent',['pressReleases'=>$pressReleases]);
     }

@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     /*Delete Press Release*/
     Route::get('delete-press-release/{id}', [EditorController::class,'destroy'])->name('user.deletePressRelease');
 
-    Route::get('manage-content', [HomeController::class,'index'])->name('user.manageContent');
+    Route::get('manage-content', [HomeController::class,'manageContent'])->name('user.manageContent');
 /*    Route::post('manage-content', [HomeController::class,'store'])->name('user.manageContentStore');*/
 //    Route::get('profile-setting', [HomeController::class,'index'])->name('user.profile');
 

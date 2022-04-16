@@ -19,7 +19,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
                                 <div class="card overflow-hidden">
-                                    <div class="card-body">
+                                    <div class="card-body" style="background-color: lavender;">
                                         <div class="d-flex">
                                             <div class="mt-2">
                                                 <h6 class="">Total Users</h6>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
                                 <div class="card overflow-hidden">
-                                    <div class="card-body">
+                                    <div class="card-body" style="background-color: lavender;">
                                         <div class="d-flex">
                                             <div class="mt-2">
                                                 <h6 class="">Total Profit</h6>
@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
                                 <div class="card overflow-hidden">
-                                    <div class="card-body">
+                                    <div class="card-body" style="background-color: lavender;">
                                         <div class="d-flex">
                                             <div class="mt-2">
                                                 <h6 class="">Total Expenses</h6>
@@ -82,7 +82,8 @@
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xl-3">
                                 <div class="card overflow-hidden">
-                                    <div class="card-body">
+                                    <div class="card-body" style="background-color: lavender;"
+                                    >
                                         <div class="d-flex">
                                             <div class="mt-2">
                                                 <h6 class="">Total Cost</h6>

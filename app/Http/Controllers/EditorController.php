@@ -76,7 +76,7 @@ class EditorController extends Controller
         $fileUpload->title = $request->title;
         $fileUpload->description = $description;
         $fileUpload->save();
-        dd($fileUpload->toArray(),$description);
+//        dd($fileUpload->toArray(),$description);
 //        dd($description);
 
 
