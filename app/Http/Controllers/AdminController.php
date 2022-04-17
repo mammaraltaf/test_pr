@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\NewPressRelease;
@@ -50,11 +51,16 @@ class AdminController extends Controller
     }
 
     public function customersIndex(){
-        return view('admin.pages.customers');
+        $customers = User::where('is_admin',0)->get();
+        return view('admin.pages.customers',['customers'=>$customers]);
     }
 
     public function rssConfigurationindex(){
         return view('admin.pages.rssConfigurations');
+    }
+
+    public function blockUser($id){
+
     }
 
 
