@@ -1,33 +1,28 @@
 @extends('layouts.admin.app')
 @section('content')
-    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
 
-        <!--begin::Post-->
-        <div class="post d-flex flex-column-fluid" id="kt_post">
-            <!--begin::Container-->
-            <div id="kt_content_container" class="container-xxl">
-                <!--begin::Navbar-->
-                <div class="card mb-5 mb-xl-10">
-                    <div class="card-body pt-9 pb-0">
-                        <!--begin::Navs-->
-                        <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder">
-                            <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
-                                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="{{route('user.profileView')}}">Overview</a>
-                            </li>
-                            <!--end::Nav item-->
-                            <!--begin::Nav item-->
-                            <li class="nav-item mt-2">
-                                <a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="{{route('user.profileSetting')}}">Settings</a>
-                            </li>
-                            <!--end::Nav item-->
-                        </ul>
-                        <!--begin::Navs-->
-                    </div>
-                </div>
-                <!--end::Navbar-->
+    <!--begin::Navbar-->
+    <div id="overview_div" class="card mb-5 mb-xl-10">
+        <div class="card-body pt-9 pb-0">
+            <!--begin::Navs-->
+            <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder">
+                <!--begin::Nav item-->
+                <li class="nav-item mt-2">
+                    <a id="overview" class="nav-link text-active-primary ms-0 me-10 py-5 active" href="{{route('user.profileView')}}">Overview</a>
+                </li>
+                <!--end::Nav item-->
+                <!--begin::Nav item-->
+                <li class="nav-item mt-2">
+                    <a id="setting" class="nav-link text-active-primary ms-0 me-10 py-5" href="{{route('user.profileSetting')}}">Settings</a>
+                </li>
+                <!--end::Nav item-->
+            </ul>
+            <!--begin::Navs-->
+        </div>
+    </div>
+    <!--end::Navbar-->
                 <!--begin::Basic info-->
-                <div class="card mb-5 mb-xl-10">
+                <div id="setting_div" class="card mb-5 mb-xl-10 d-none">
                     <!--begin::Card header-->
                     <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
                         <!--begin::Card title-->
@@ -532,48 +527,22 @@
                 <!--end::Basic info-->
             </div>
             <!--end::Container-->
-        </div>
-        <!--end::Post-->
+
     </div>
 @endsection
 @section('script')
+
     <script type="text/javascript">
-
-        $("#kt_datepicker_10").flatpickr({
-            enableTime: true,
-            dateFormat: "Y-m-d H:i",
-        });
-
         $(document).ready(function() {
-            $("#edit-user-button").click(function(e) {
-                e.preventDefault();
 
-                swal({
-                    title: "Are you sure?",
-                    text: "Save User Information?",
-                    icon: "info",
-                    buttons: true,
-                }).then((willDelete) => {
-                    if (willDelete) {
-                        var data = $('#edit-user-form').serialize()+'&complete_status=completed'
-                        $.ajax({
-                            type: 'POST',
-                            url: `{!! route('user.profileSettingUpdate') !!}`,
-                            data: data
-                        }).done(function(data) {
-                            swal("User Updated Successfully", {
-                                icon: "success",
-                            });
-                            let pageRedirectUrl = `{!! url('profile-view') !!}`;
-                            window.location.href = pageRedirectUrl;
-                        }).fail(function(data) {
-                            // Optionally alert the user of an error here...
-                        });
+            $("#overview").click(function () {
+                $("#setting_div").addClass('d-none');
+                $("#overview_div").removeClass('d-none');
+            });
 
-                    }
-                });
-            })
+            $("#setting").click(function () {
+                $("#setting_div").removeClass('d-none');
+                $("#overview_div").addClass('d-none');
+            });
         });
-    </script>
-
 @endsection
