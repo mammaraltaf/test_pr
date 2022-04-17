@@ -22,8 +22,8 @@
                                     <div class="card-body" style="background-color: lavender;">
                                         <div class="d-flex">
                                             <div class="mt-2">
-                                                <h6 class="">Total Users</h6>
-                                                <h2 class="mb-0 number-font">44,278</h2>
+                                                <h1 class="">All Posts</h1>
+                                                <h2 class="mb-0 number-font" style="color:red">44,278</h2>
                                             </div>
                                             <div class="ms-auto">
                                                 <div class="chart-wrapper mt-1">
@@ -32,9 +32,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span class="text-muted fs-12"><span class="text-secondary"><i
+{{--                                        <span class="text-muted fs-12"><span class="text-secondary"><i
                                                     class="fe fe-arrow-up-circle  text-secondary"></i> 5%</span>
-                                                    Last week</span>
+                                                    Last week</span>--}}
                                     </div>
                                 </div>
                             </div>
@@ -43,8 +43,8 @@
                                     <div class="card-body" style="background-color: lavender;">
                                         <div class="d-flex">
                                             <div class="mt-2">
-                                                <h6 class="">Total Profit</h6>
-                                                <h2 class="mb-0 number-font">67,987</h2>
+                                                <h1 class="">Drafts</h1>
+                                                <h2 class="mb-0 number-font" style="color:red">67,987</h2>
                                             </div>
                                             <div class="ms-auto">
                                                 <div class="chart-wrapper mt-1">
@@ -53,9 +53,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span class="text-muted fs-12"><span class="text-pink"><i
+{{--                                        <span class="text-muted fs-12"><span class="text-pink"><i
                                                     class="fe fe-arrow-down-circle text-pink"></i> 0.75%</span>
-                                                    Last 6 days</span>
+                                                    Last 6 days</span>--}}
                                     </div>
                                 </div>
                             </div>
@@ -64,8 +64,8 @@
                                     <div class="card-body" style="background-color: lavender;">
                                         <div class="d-flex">
                                             <div class="mt-2">
-                                                <h6 class="">Total Expenses</h6>
-                                                <h2 class="mb-0 number-font">$76,965</h2>
+                                                <h1 class="">Pending</h1>
+                                                <h2 class="mb-0 number-font" style="color:red">$76,965</h2>
                                             </div>
                                             <div class="ms-auto">
                                                 <div class="chart-wrapper mt-1">
@@ -74,9 +74,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span class="text-muted fs-12"><span class="text-green"><i
+{{--                                        <span class="text-muted fs-12"><span class="text-green"><i
                                                     class="fe fe-arrow-up-circle text-green"></i> 0.9%</span>
-                                                    Last 9 days</span>
+                                                    Last 9 days</span>--}}
                                     </div>
                                 </div>
                             </div>
@@ -86,8 +86,8 @@
                                     >
                                         <div class="d-flex">
                                             <div class="mt-2">
-                                                <h6 class="">Total Cost</h6>
-                                                <h2 class="mb-0 number-font">$59,765</h2>
+                                                <h1 class="">Posted</h1>
+                                                <h2 class="mb-0 number-font" style="color:red">$59,765</h2>
                                             </div>
                                             <div class="ms-auto">
                                                 <div class="chart-wrapper mt-1">
@@ -96,9 +96,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <span class="text-muted fs-12"><span class="text-warning"><i
+{{--                                        <span class="text-muted fs-12"><span class="text-warning"><i
                                                     class="fe fe-arrow-up-circle text-warning"></i> 0.6%</span>
-                                                    Last year</span>
+                                                    Last year</span>--}}
                                     </div>
                                 </div>
                             </div>
