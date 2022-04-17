@@ -17,9 +17,12 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    // Comment
+     public function index()
     {
         return view('adminHome');
+
     }
 
     public function manageContentIndex(){
