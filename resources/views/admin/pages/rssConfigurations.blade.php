@@ -1,5 +1,5 @@
 @extends('layouts.admin.app')
-@section('pageTitle') Home @endsection
+@section('pageTitle') RSS Configuration @endsection
 @section('content')
 
 @endsection

@@ -1,5 +1,5 @@
 @extends('layouts.admin.app')
-@section('pageTitle') Home @endsection
+@section('pageTitle') Manage Content @endsection
 @section('content')
     <!--begin::Header-->
 

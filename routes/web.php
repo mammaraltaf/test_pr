@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     /*Admin Routes*/
     Route::get('/admin/home', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.home');
     Route::get('/admin/manage-content', [AdminController::class, 'manageContentIndex'])->middleware('is_admin')->name('admin.manageContent');
+    Route::get('/admin/user-press-releases', [AdminController::class, 'userPressReleases'])->middleware('is_admin')->name('admin.userPressReleases');
     Route::get('/admin/new-press-release', [EditorController::class,'index'])->middleware('is_admin')->name('admin.newPressRelease');
     Route::post('/admin/new-press-release', [EditorController::class,'adminStore'])->name('admin.newPressReleaseStore');
 

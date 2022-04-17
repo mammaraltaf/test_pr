@@ -34,6 +34,10 @@ class AdminController extends Controller
             'pressReleasesPosted'=>$pressReleasesPosted]);
     }
 
+    public function userPressReleases(){
+        return view('admin.pages.userPressReleases');
+    }
+
     public function newPressReleaseIndex(){
         return view('admin.pages.newPressRelease');
     }

@@ -47,6 +47,11 @@
                             </a>
                         </div>
                         <div class="menu-item">
+                            <a class="menu-link  {{ Route::currentRouteNamed('admin.userPressReleases') ? 'active' : '' }}" href="{{route('admin.userPressReleases')}}">
+                                <span class="menu-title">Users Press Releases</span>
+                            </a>
+                        </div>
+                        <div class="menu-item">
                             <a class="menu-link  {{ Route::currentRouteNamed('admin.manageContent') ? 'active' : '' }}" href="{{route('admin.manageContent')}}">
                                 <span class="menu-title">Manage Content</span>
                             </a>

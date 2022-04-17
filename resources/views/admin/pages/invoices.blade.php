@@ -1,5 +1,5 @@
 @extends('layouts.admin.app')
-@section('pageTitle') Home @endsection
+@section('pageTitle') Invoices @endsection
 @section('content')
 <!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
@@ -310,18 +310,18 @@
                             <!--begin::Actions-->
                             <div class="mb-0">
                                 <!--begin::Row-->
-                                <div class="row mb-5">
-                                    <!--begin::Col-->
-                                    <div class="col">
-                                        <a href="#" class="btn btn-light btn-active-light-primary w-100">Preview</a>
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--begin::Col-->
-                                    <div class="col">
-                                        <a href="#" class="btn btn-light btn-active-light-primary w-100">Download</a>
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
+{{--                                <div class="row mb-5">--}}
+{{--                                    <!--begin::Col-->--}}
+{{--                                    <div class="col">--}}
+{{--                                        <a href="#" class="btn btn-light btn-active-light-primary w-100">Preview</a>--}}
+{{--                                    </div>--}}
+{{--                                    <!--end::Col-->--}}
+{{--                                    <!--begin::Col-->--}}
+{{--                                    <div class="col">--}}
+{{--                                        <a href="#" class="btn btn-light btn-active-light-primary w-100">Download</a>--}}
+{{--                                    </div>--}}
+{{--                                    <!--end::Col-->--}}
+{{--                                </div>--}}
                                 <!--end::Row-->
                                 <button type="submit" href="#" class="btn btn-primary w-100" id="kt_invoice_submit_button">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen016.svg-->

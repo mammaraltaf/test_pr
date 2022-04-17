@@ -8,23 +8,23 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <!-- <link rel="manifest" href={{asset("site")}}".webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href={{asset("assets")}}"/img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/slicknav.css">
-    <link rel="stylesheet" href="assets/css/animate.min.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/themify-icons.css">
-    <link rel="stylesheet" href="assets/css/slick.css">
-    <link rel="stylesheet" href="assets/css/nice-select.css">
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href={{asset("assets/css/bootstrap.min.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/owl.carousel.min.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/slicknav.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/animate.min.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/magnific-popup.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/fontawesome-all.min.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/themify-icons.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/themify-icons.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/slick.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/nice-select.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/style.css")}}>
+    <link rel="stylesheet" href={{asset("assets/css/responsive.css")}}>
 </head>
 
 <body>
@@ -58,9 +58,9 @@
                             </div>
                             <div class="header-info-right">
                                 <ul class="header-social">
-                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                    <li> <a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                                    <li><a href={{asset("#")}}""><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href={{asset("#")}}""><i class="fab fa-instagram"></i></a></li>
+                                    <li> <a href={{asset("#")}}""><i class="fab fa-pinterest-p"></i></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                         <!-- Logo -->
                         <div class="col-xl-3 col-lg-3 col-md-3">
                             <div class="logo">
-                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href={{asset("index")}}".html"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-9 col-lg-9 col-md-9">
@@ -90,23 +90,23 @@
                         <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                             <!-- sticky -->
                             <div class="sticky-logo">
-                                <a href="index.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href={{asset("index")}}".html"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>
                             <!-- Main-menu -->
                             <div class="main-menu d-none d-md-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="index.html">Home</a></li>
-                                        <li><a href="categori.html">Category</a></li>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="latest_news.html">Latest News</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="#">Pages</a>
+                                        <li><a href={{asset("index")}}".html">Home</a></li>
+                                        <li><a href={{asset("categori")}}".html">Category</a></li>
+                                        <li><a href={{asset("about")}}".html">About</a></li>
+                                        <li><a href={{asset("latest_news")}}".html">Latest News</a></li>
+                                        <li><a href={{asset("contact")}}".html">Contact</a></li>
+                                        <li><a href={{asset("#")}}"">Pages</a>
                                             <ul class="submenu">
-                                                <li><a href="elements.html">Element</a></li>
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="single-blog.html">Blog Details</a></li>
-                                                <li><a href="details.html">Categori Details</a></li>
+                                                <li><a href={{asset("elements")}}".html">Element</a></li>
+                                                <li><a href={{asset("blog")}}".html">Blog</a></li>
+                                                <li><a href={{asset("single")}}"-blog.html">Blog Details</a></li>
+                                                <li><a href={{asset("details")}}".html">Categori Details</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -145,21 +145,21 @@
                     <article class="blog_item">
                         <div class="blog_item_img">
                             <img class="card-img rounded-0" src="assets/img/blog/single_blog_1.png" alt="">
-                            <a href="#" class="blog_item_date">
+                            <a href={{asset("#")}}"" class="blog_item_date">
                                 <h3>15</h3>
                                 <p>Jan</p>
                             </a>
                         </div>
 
                         <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
+                            <a class="d-inline-block" href={{asset("single")}}"-blog.html">
                                 <h2>Google inks pact for new 35-storey office</h2>
                             </a>
                             <p>That dominion stars lights dominion divide years for fourth have don't stars is that
                                 he earth it first without heaven in place seed it second morning saying.</p>
                             <ul class="blog-info-link">
-                                <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                <li><a href={{asset("#")}}""><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                <li><a href={{asset("#")}}""><i class="fa fa-comments"></i> 03 Comments</a></li>
                             </ul>
                         </div>
                     </article>
@@ -167,21 +167,21 @@
                     <article class="blog_item">
                         <div class="blog_item_img">
                             <img class="card-img rounded-0" src="assets/img/blog/single_blog_2.png" alt="">
-                            <a href="#" class="blog_item_date">
+                            <a href={{asset("#")}}"" class="blog_item_date">
                                 <h3>15</h3>
                                 <p>Jan</p>
                             </a>
                         </div>
 
                         <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
+                            <a class="d-inline-block" href={{asset("single")}}"-blog.html">
                                 <h2>Google inks pact for new 35-storey office</h2>
                             </a>
                             <p>That dominion stars lights dominion divide years for fourth have don't stars is that
                                 he earth it first without heaven in place seed it second morning saying.</p>
                             <ul class="blog-info-link">
-                                <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                <li><a href={{asset("#")}}""><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                <li><a href={{asset("#")}}""><i class="fa fa-comments"></i> 03 Comments</a></li>
                             </ul>
                         </div>
                     </article>
@@ -189,21 +189,21 @@
                     <article class="blog_item">
                         <div class="blog_item_img">
                             <img class="card-img rounded-0" src="assets/img/blog/single_blog_3.png" alt="">
-                            <a href="#" class="blog_item_date">
+                            <a href={{asset("#")}}"" class="blog_item_date">
                                 <h3>15</h3>
                                 <p>Jan</p>
                             </a>
                         </div>
 
                         <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
+                            <a class="d-inline-block" href={{asset("single")}}"-blog.html">
                                 <h2>Google inks pact for new 35-storey office</h2>
                             </a>
                             <p>That dominion stars lights dominion divide years for fourth have don't stars is that
                                 he earth it first without heaven in place seed it second morning saying.</p>
                             <ul class="blog-info-link">
-                                <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                <li><a href={{asset("#")}}""><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                <li><a href={{asset("#")}}""><i class="fa fa-comments"></i> 03 Comments</a></li>
                             </ul>
                         </div>
                     </article>
@@ -211,21 +211,21 @@
                     <article class="blog_item">
                         <div class="blog_item_img">
                             <img class="card-img rounded-0" src="assets/img/blog/single_blog_4.png" alt="">
-                            <a href="#" class="blog_item_date">
+                            <a href={{asset("#")}}"" class="blog_item_date">
                                 <h3>15</h3>
                                 <p>Jan</p>
                             </a>
                         </div>
 
                         <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
+                            <a class="d-inline-block" href={{asset("single")}}"-blog.html">
                                 <h2>Google inks pact for new 35-storey office</h2>
                             </a>
                             <p>That dominion stars lights dominion divide years for fourth have don't stars is that
                                 he earth it first without heaven in place seed it second morning saying.</p>
                             <ul class="blog-info-link">
-                                <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                <li><a href={{asset("#")}}""><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                <li><a href={{asset("#")}}""><i class="fa fa-comments"></i> 03 Comments</a></li>
                             </ul>
                         </div>
                     </article>
@@ -233,21 +233,21 @@
                     <article class="blog_item">
                         <div class="blog_item_img">
                             <img class="card-img rounded-0" src="assets/img/blog/single_blog_5.png" alt="">
-                            <a href="#" class="blog_item_date">
+                            <a href={{asset("#")}}"" class="blog_item_date">
                                 <h3>15</h3>
                                 <p>Jan</p>
                             </a>
                         </div>
 
                         <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
+                            <a class="d-inline-block" href={{asset("single")}}"-blog.html">
                                 <h2>Google inks pact for new 35-storey office</h2>
                             </a>
                             <p>That dominion stars lights dominion divide years for fourth have don't stars is that
                                 he earth it first without heaven in place seed it second morning saying.</p>
                             <ul class="blog-info-link">
-                                <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
-                                <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
+                                <li><a href={{asset("#")}}""><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                <li><a href={{asset("#")}}""><i class="fa fa-comments"></i> 03 Comments</a></li>
                             </ul>
                         </div>
                     </article>
@@ -255,18 +255,18 @@
                     <nav class="blog-pagination justify-content-center d-flex">
                         <ul class="pagination">
                             <li class="page-item">
-                                <a href="#" class="page-link" aria-label="Previous">
+                                <a href={{asset("#")}}"" class="page-link" aria-label="Previous">
                                     <i class="ti-angle-left"></i>
                                 </a>
                             </li>
                             <li class="page-item">
-                                <a href="#" class="page-link">1</a>
+                                <a href={{asset("#")}}"" class="page-link">1</a>
                             </li>
                             <li class="page-item active">
-                                <a href="#" class="page-link">2</a>
+                                <a href={{asset("#")}}"" class="page-link">2</a>
                             </li>
                             <li class="page-item">
-                                <a href="#" class="page-link" aria-label="Next">
+                                <a href={{asset("#")}}"" class="page-link" aria-label="Next">
                                     <i class="ti-angle-right"></i>
                                 </a>
                             </li>
@@ -297,37 +297,37 @@
                         <h4 class="widget_title">Category</h4>
                         <ul class="list cat-list">
                             <li>
-                                <a href="#" class="d-flex">
+                                <a href={{asset("#")}}"" class="d-flex">
                                     <p>Resaurant food</p>
                                     <p>(37)</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="d-flex">
+                                <a href={{asset("#")}}"" class="d-flex">
                                     <p>Travel news</p>
                                     <p>(10)</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="d-flex">
+                                <a href={{asset("#")}}"" class="d-flex">
                                     <p>Modern technology</p>
                                     <p>(03)</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="d-flex">
+                                <a href={{asset("#")}}"" class="d-flex">
                                     <p>Product</p>
                                     <p>(11)</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="d-flex">
+                                <a href={{asset("#")}}"" class="d-flex">
                                     <p>Inspiration</p>
                                     <p>21</p>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="d-flex">
+                                <a href={{asset("#")}}"" class="d-flex">
                                     <p>Health Care (21)</p>
                                     <p>09</p>
                                 </a>
@@ -340,7 +340,7 @@
                         <div class="media post_item">
                             <img src="assets/img/post/post_1.png" alt="post">
                             <div class="media-body">
-                                <a href="single-blog.html">
+                                <a href={{asset("single")}}"-blog.html">
                                     <h3>From life was you fish...</h3>
                                 </a>
                                 <p>January 12, 2019</p>
@@ -349,7 +349,7 @@
                         <div class="media post_item">
                             <img src="assets/img/post/post_2.png" alt="post">
                             <div class="media-body">
-                                <a href="single-blog.html">
+                                <a href={{asset("single")}}"-blog.html">
                                     <h3>The Amazing Hubble</h3>
                                 </a>
                                 <p>02 Hours ago</p>
@@ -358,7 +358,7 @@
                         <div class="media post_item">
                             <img src="assets/img/post/post_3.png" alt="post">
                             <div class="media-body">
-                                <a href="single-blog.html">
+                                <a href={{asset("single")}}"-blog.html">
                                     <h3>Astronomy Or Astrology</h3>
                                 </a>
                                 <p>03 Hours ago</p>
@@ -367,7 +367,7 @@
                         <div class="media post_item">
                             <img src="assets/img/post/post_4.png" alt="post">
                             <div class="media-body">
-                                <a href="single-blog.html">
+                                <a href={{asset("single")}}"-blog.html">
                                     <h3>Asteroids telescope</h3>
                                 </a>
                                 <p>01 Hours ago</p>
@@ -378,28 +378,28 @@
                         <h4 class="widget_title">Tag Clouds</h4>
                         <ul class="list">
                             <li>
-                                <a href="#">project</a>
+                                <a href={{asset("#")}}"">project</a>
                             </li>
                             <li>
-                                <a href="#">love</a>
+                                <a href={{asset("#")}}"">love</a>
                             </li>
                             <li>
-                                <a href="#">technology</a>
+                                <a href={{asset("#")}}"">technology</a>
                             </li>
                             <li>
-                                <a href="#">travel</a>
+                                <a href={{asset("#")}}"">travel</a>
                             </li>
                             <li>
-                                <a href="#">restaurant</a>
+                                <a href={{asset("#")}}"">restaurant</a>
                             </li>
                             <li>
-                                <a href="#">life style</a>
+                                <a href={{asset("#")}}"">life style</a>
                             </li>
                             <li>
-                                <a href="#">design</a>
+                                <a href={{asset("#")}}"">design</a>
                             </li>
                             <li>
-                                <a href="#">illustration</a>
+                                <a href={{asset("#")}}"">illustration</a>
                             </li>
                         </ul>
                     </aside>
@@ -409,32 +409,32 @@
                         <h4 class="widget_title">Instagram Feeds</h4>
                         <ul class="instagram_row flex-wrap">
                             <li>
-                                <a href="#">
+                                <a href={{asset("#")}}"">
                                     <img class="img-fluid" src="assets/img/post/post_5.png" alt="">
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href={{asset("#")}}"">
                                     <img class="img-fluid" src="assets/img/post/post_6.png" alt="">
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href={{asset("#")}}"">
                                     <img class="img-fluid" src="assets/img/post/post_7.png" alt="">
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href={{asset("#")}}"">
                                     <img class="img-fluid" src="assets/img/post/post_8.png" alt="">
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href={{asset("#")}}"">
                                     <img class="img-fluid" src="assets/img/post/post_9.png" alt="">
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href={{asset("#")}}"">
                                     <img class="img-fluid" src="assets/img/post/post_10.png" alt="">
                                 </a>
                             </li>
@@ -471,7 +471,7 @@
                         <div class="single-footer-caption">
                             <!-- logo -->
                             <div class="footer-logo">
-                                <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                                <a href={{asset("index")}}".html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
                             </div>
                             <div class="footer-tittle">
                                 <div class="footer-pera">
@@ -480,9 +480,9 @@
                             </div>
                             <!-- social -->
                             <div class="footer-social">
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                <a href={{asset("#")}}""><i class="fab fa-twitter"></i></a>
+                                <a href={{asset("#")}}""><i class="fab fa-instagram"></i></a>
+                                <a href={{asset("#")}}""><i class="fab fa-pinterest-p"></i></a>
                             </div>
                         </div>
                     </div>
@@ -518,12 +518,12 @@
                         </div>
                         <div class="instagram-gellay">
                             <ul class="insta-feed">
-                                <li><a href="#"><img src="assets/img/post/instra1.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/post/instra2.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/post/instra3.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/post/instra4.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/post/instra5.jpg" alt=""></a></li>
-                                <li><a href="#"><img src="assets/img/post/instra6.jpg" alt=""></a></li>
+                                <li><a href={{asset("#")}}""><img src="assets/img/post/instra1.jpg" alt=""></a></li>
+                                <li><a href={{asset("#")}}""><img src="assets/img/post/instra2.jpg" alt=""></a></li>
+                                <li><a href={{asset("#")}}""><img src="assets/img/post/instra3.jpg" alt=""></a></li>
+                                <li><a href={{asset("#")}}""><img src="assets/img/post/instra4.jpg" alt=""></a></li>
+                                <li><a href={{asset("#")}}""><img src="assets/img/post/instra5.jpg" alt=""></a></li>
+                                <li><a href={{asset("#")}}""><img src="assets/img/post/instra6.jpg" alt=""></a></li>
                             </ul>
                         </div>
                     </div>
@@ -539,16 +539,16 @@
                     <div class="col-lg-6">
                         <div class="footer-copy-right">
                             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href={{asset("https")}}"://colorlib.com" target="_blank">Colorlib</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="footer-menu f-right">
                             <ul>
-                                <li><a href="#">Terms of use</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li><a href={{asset("#")}}"">Terms of use</a></li>
+                                <li><a href={{asset("#")}}"">Privacy Policy</a></li>
+                                <li><a href={{asset("#")}}"">Contact</a></li>
                             </ul>
                         </div>
                     </div>

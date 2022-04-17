@@ -1,4 +1,6 @@
 @extends('layouts.admin.app')
+@section('pageTitle') Profile Settings @endsection
+
 @section('content')
 
     <!--begin::Navbar-->

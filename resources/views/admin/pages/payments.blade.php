@@ -1,5 +1,5 @@
 @extends('layouts.admin.app')
-@section('pageTitle') Home @endsection
+@section('pageTitle') Payments @endsection
 @section('content')
     <!--begin::Header-->
 
