@@ -103,7 +103,7 @@
         <!--begin::Content-->
         <div id="kt_account_settings_profile_details" class="collapse show">
             <!--begin::Form-->
-            <form id="edit-user-form" action="{{route('user.profileSettingUpdate')}}" method="POST" class="form">
+            <form id="edit-user-form" action="" method="POST">
             @csrf
             <!--begin::Card body-->
                 <div class="card-body border-top p-9">
@@ -583,8 +583,10 @@
                 <!--end::Card body-->
                 <!--begin::Actions-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
-                    <a href="" class="btn btn-light btn-active-light-primary me-2">Discard</a>
-                    <input type="submit" class="btn btn-primary" id="edit-user-button" value="Save Changes"></input>
+                    <a href="{{route('user.profileView')}}" class="btn btn-light btn-active-light-primary me-2">Discard</a>
+{{--                    <input type="submit" class="btn btn-primary" id="edit-user-button" id="savechanges" value="Save Changes"></input>--}}
+                    <button class="btn btn-primary" id="edit-user-button" type="submit" value="Ready to Publish">Save Changes</button>
+
                 </div>
                 <!--end::Actions-->
             </form>
@@ -598,6 +600,34 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+            $("#savechanges").click(function(e) {
+                e.preventDefault();
+
+                swal({
+                    title: "Are you sure?",
+                    text: "Update User Profile?",
+                    icon: "info",
+                    buttons: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        var data = $('#edit-user-form').serialize()
+                        $.ajax({
+                            type: 'POST',
+                            url: `{!! route('user.profileViewUpdate') !!}`,
+                            data: data
+                        }).done(function(data) {
+                            swal("User Details Updated Successfully", {
+                                icon: "success",
+                            });
+                            let pageRedirectUrl = `{!! url('profile-view') !!}`;
+                            window.location.href = pageRedirectUrl;
+                        }).fail(function(data) {
+                            // Optionally alert the user of an error here...
+                        });
+
+                    }
+                });
+            })
 
             $("#overview").click(function () {
                 $("#setting_div").addClass('d-none');

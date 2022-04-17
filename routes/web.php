@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile-view', function () { return view('user.pages.profileView'); })->name('user.profileView');
     Route::get('/profile-setting', function () { return view('user.pages.profileSetting'); })->name('user.profileSetting');
     /*User Profile Edit*/
-    Route::post('/profile-setting', [RegisterController::class,'update'])->name('user.profileSettingUpdate');
+    Route::post('/profile-view', [RegisterController::class,'update'])->name('user.profileViewUpdate');
 //    Route::post('profile-setting', [HomeController::class,'store'])->name('user.profileStore');
 
     /*Admin Routes*/
