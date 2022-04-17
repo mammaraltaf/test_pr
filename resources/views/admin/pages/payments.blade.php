@@ -23,22 +23,24 @@
                     <th>Email</th>
                     <th>Country</th>
                     <th>TimeZone</th>
+                    <th>Amount</th>
+                    <th>Charge ID</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($customers as $customer)
+{{--                @foreach($customers as $customer)--}}
                     <tr>
-                        <td>{{$customer->name}}</td>
-                        <td>{{$customer->email}}</td>
-                        <td><span class="badge badge-pill badge-primary">{{$customer->country}}</span></td>
-                        {{--<td>{{$customer->country}}</td>--}}
-                        <td>{{$customer->timezone}}</td>
-                        <td>
-                            <a href="{{url('/',$customer->id)}}" class="btn btn-danger btn-sm" id="{{$customer->id}}" data-toggle="tooltip">Remove</a>
-                        </td>
+{{--                        <td>{{$customer->name}}</td>--}}
+{{--                        <td>{{$customer->email}}</td>--}}
+{{--                        <td><span class="badge badge-pill badge-primary">{{$customer->country}}</span></td>--}}
+{{--                        --}}{{--<td>{{$customer->country}}</td>--}}
+{{--                        <td>{{$customer->timezone}}</td>--}}
+{{--                        <td>--}}
+{{--                            <a href="{{url('/',$customer->id)}}" class="btn btn-danger btn-sm" id="{{$customer->id}}" data-toggle="tooltip">Remove</a>--}}
+{{--                        </td>--}}
                     </tr>
-                @endforeach
+{{--                @endforeach--}}
                 </tbody>
                 <tfoot>
                 <tr>
@@ -46,6 +48,8 @@
                     <th>Email</th>
                     <th>Country</th>
                     <th>TimeZone</th>
+                    <th>Amount</th>
+                    <th>Charge ID</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
