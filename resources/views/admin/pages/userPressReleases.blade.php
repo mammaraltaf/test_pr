@@ -26,6 +26,7 @@
     <!--begin::Body-->
     <div class="card-body py-3">
         <div class="tab-content">
+
             {{--All Datatable--}}
             <table id="example" name="allTable" class="ui celled table allTable" style="width:100%">
                 <thead>
