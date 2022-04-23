@@ -13,9 +13,9 @@
                 <li class="nav-item">
                     <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-info fw-bolder px-4 me-1" id="draftTab" data-kt-timeline-widget-1="tab" data-bs-toggle="tab" href="#kt_timeline_widget_1_tab_week">Draft</a>
                 </li>
-                <li class="nav-item">
+{{--                <li class="nav-item">
                     <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-warning fw-bolder px-4 me-1" id="pendingTab" data-kt-timeline-widget-1="tab" data-bs-toggle="tab" href="#kt_timeline_widget_1_tab_month">Pending</a>
-                </li>
+                </li>--}}
                 <li class="nav-item">
                     <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-success fw-bolder px-4 me-1" id="postedTab" data-kt-timeline-widget-1="tab" data-bs-toggle="tab" href="#kt_timeline_widget_1_tab_month">Posted</a>
                 </li>
@@ -34,7 +34,6 @@
                 <thead>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -44,18 +43,21 @@
                 @foreach($pressReleases as $pressrel)
                     <tr>
                         <td>{{$pressrel->title}}</td>
-                        {{--                    <td>{{$pressrel->description}}</td>--}}
                         <td><span class="badge badge-pill badge-primary">{{$pressrel->schedule_press_release_date_time}}</span></td>
                         @if ($pressrel->status == '0')
                             <td><span class="badge badge-pill badge-info">Draft</span></td>
                         @elseif ($pressrel->status == '1')
                             <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                        @elseif ($pressrel->status == '0')
+                        @elseif ($pressrel->status == '2')
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
-                            <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Edit</a>
-                            <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
+                            @if(!($pressrel->status == '2'))
+                                <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm"
+                                   id="{{$pressrel->id}}" data-toggle="tooltip">Edit</a>
+                            @endif
+                            <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm"
+                               id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
 
                         </td>
                     </tr>
@@ -64,7 +66,6 @@
                 <tfoot>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -76,7 +77,6 @@
                 <thead>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -86,13 +86,12 @@
                 @foreach($pressReleasesDraft as $pressreldraft)
                     <tr>
                         <td>{{$pressreldraft->title}}</td>
-                        {{--                    <td>{{$pressrel->description}}</td>--}}
                         <td><span class="badge badge-pill badge-primary">{{$pressrel->schedule_press_release_date_time}}</span></td>
                         @if ($pressreldraft->status == '0')
                             <td><span class="badge badge-pill badge-info">Draft</span></td>
                         @elseif ($pressreldraft->status == '1')
                             <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                        @elseif ($pressreldraft->status == '0')
+                        @elseif ($pressreldraft->status == '2')
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
@@ -105,7 +104,6 @@
                 <tfoot>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -113,46 +111,45 @@
                 </tfoot>
             </table>
             {{--Pending DataTable--}}
-            <table id="example2" name="pendingTable" class="ui celled table pendingTable d-none" style="width:100%">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    {{--                    <th>Description</th>--}}
-                    <th>Schedule Date Time</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($pressReleasesPending as $pressrelpending)
-                    <tr>
-                        <td>{{$pressrelpending->title}}</td>
-                        {{--                    <td>{{$pressrel->description}}</td>--}}
-                        <td><span class="badge badge-pill badge-primary">{{$pressrel->schedule_press_release_date_time}}</span></td>
-                        @if ($pressrelpending->status == '0')
-                            <td><span class="badge badge-pill badge-info">Draft</span></td>
-                        @elseif ($pressrelpending->status == '1')
-                            <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                        @elseif ($pressrelpending->status == '0')
-                            <td><span class="badge badge-pill badge-success">Active</span></td>
-                        @endif
-                        <td>
-                            <a href="{{url('/edit-press-release',$pressrelpending->id)}}" class="btn btn-primary btn-sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Edit</a>
-                            <a href="{{url('/delete-press-release',$pressrelpending->id)}}" class="btn btn-danger btn-sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Delete</a>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-                <tfoot>
-                <tr>
-                    <th>Title</th>
-                    {{--                    <th>Description</th>--}}
-                    <th>Schedule Date Time</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                </tr>
-                </tfoot>
-            </table>
+            {{--            <table id="example2" name="pendingTable" class="ui celled table pendingTable d-none" style="width:100%">--}}
+            {{--                <thead>--}}
+            {{--                <tr>--}}
+            {{--                    <th>Title</th>--}}
+            {{--                    <th>Schedule Date Time</th>--}}
+            {{--                    <th>Status</th>--}}
+            {{--                    <th>Action</th>--}}
+            {{--                </tr>--}}
+            {{--                </thead>--}}
+            {{--                <tbody>--}}
+            {{--                @foreach($pressReleasesPending as $pressrelpending)--}}
+            {{--                    <tr>--}}
+            {{--                        <td>{{$pressrelpending->title}}</td>--}}
+            {{--                        --}}{{--                    <td>{{$pressrel->description}}</td>--}}
+            {{--                        <td><span class="badge badge-pill badge-primary">{{$pressrel->schedule_press_release_date_time}}</span></td>--}}
+            {{--                        @if ($pressrelpending->status == '0')--}}
+            {{--                            <td><span class="badge badge-pill badge-info">Draft</span></td>--}}
+            {{--                        @elseif ($pressrelpending->status == '1')--}}
+            {{--                            <td><span class="badge badge-pill badge-warning">Pending</span></td>--}}
+            {{--                        @elseif ($pressrelpending->status == '2')--}}
+            {{--                            <td><span class="badge badge-pill badge-success">Active</span></td>--}}
+            {{--                        @endif--}}
+            {{--                        <td>--}}
+            {{--                            <a href="{{url('/edit-press-release',$pressrelpending->id)}}" class="btn btn-primary btn-sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Edit</a>--}}
+            {{--                            <a href="{{url('/delete-press-release',$pressrelpending->id)}}" class="btn btn-danger btn-sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Delete</a>--}}
+            {{--                        </td>--}}
+            {{--                    </tr>--}}
+            {{--                @endforeach--}}
+            {{--                </tbody>--}}
+            {{--                <tfoot>--}}
+            {{--                <tr>--}}
+            {{--                    <th>Title</th>--}}
+            {{--                    --}}{{--                    <th>Description</th>--}}
+            {{--                    <th>Schedule Date Time</th>--}}
+            {{--                    <th>Status</th>--}}
+            {{--                    <th>Action</th>--}}
+            {{--                </tr>--}}
+            {{--                </tfoot>--}}
+            {{--            </table>--}}
             {{--Posted DataTable--}}
             <table id="example3" name="postedTable" class="ui celled table postedTable d-none" style="width:100%">
                 <thead>

@@ -26,7 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $allPosts = NewPressRelease::where('user_id', Auth::user()->id)->count();
+        $draftPosts = NewPressRelease::where('user_id', Auth::user()->id)->where('status', 0)->count();
+        $pendingPosts = NewPressRelease::where('user_id', Auth::user()->id)->where('status', 1)->count();
+        $postedPosts = NewPressRelease::where('user_id', Auth::user()->id)->where('status', 2)->count();
+        return view('home', ['allPosts' => $allPosts, 'draftPosts' => $draftPosts, 'pendingPosts' => $pendingPosts, 'postedPosts' => $postedPosts]);
     }
 
     public function manageContent(){
@@ -34,6 +38,7 @@ class HomeController extends Controller
         $pressReleasesDraft = NewPressRelease::where('user_id',Auth::user()->id)->where('status',0)->get();
         $pressReleasesPending = NewPressRelease::where('user_id',Auth::user()->id)->where('status',1)->get();
         $pressReleasesPosted = NewPressRelease::where('user_id',Auth::user()->id)->where('status',2)->get();
+
         return view('user.pages.manageContent',['pressReleases'=>$pressReleases,
                                                     'pressReleasesDraft'=>$pressReleasesDraft,
                                                     'pressReleasesPending'=>$pressReleasesPending,

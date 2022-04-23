@@ -50,11 +50,13 @@
                         <td><span class="badge badge-pill badge-info">Draft</span></td>
                     @elseif ($pressrel->status == '1')
                         <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                    @elseif ($pressrel->status == '0')
+                    @elseif ($pressrel->status == '2')
                         <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                     <td>
+                        @if (!($pressrel->status == '2'))
                         <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Edit</a>
+                        @endif
                         <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
 
                     </td>
@@ -92,7 +94,7 @@
                             <td><span class="badge badge-pill badge-info">Draft</span></td>
                         @elseif ($pressreldraft->status == '1')
                             <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                        @elseif ($pressreldraft->status == '0')
+                        @elseif ($pressreldraft->status == '2')
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
@@ -133,7 +135,7 @@
                             <td><span class="badge badge-pill badge-info">Draft</span></td>
                         @elseif ($pressrelpending->status == '1')
                             <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                        @elseif ($pressrelpending->status == '0')
+                        @elseif ($pressrelpending->status == '2')
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
@@ -146,7 +148,6 @@
                 <tfoot>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -158,7 +159,6 @@
                 <thead>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -168,7 +168,6 @@
                 @foreach($pressReleasesPosted as $pressrelposted)
                     <tr>
                         <td>{{$pressrelposted->title}}</td>
-                        {{--                    <td>{{$pressrel->description}}</td>--}}
                         <td><span class="badge badge-pill badge-primary">{{$pressrel->schedule_press_release_date_time}}</span></td>
                         @if ($pressrelposted->status == '0')
                             <td><span class="badge badge-pill badge-info">Draft</span></td>
@@ -178,7 +177,9 @@
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
+                            @if (!($pressrelposted->status == '2'))
                             <a href="{{url('/edit-press-release',$pressrelposted->id)}}" class="btn btn-primary btn-sm" id="{{$pressrelposted->id}}" data-toggle="tooltip">Edit</a>
+                            @endif
                             <a href="{{url('/delete-press-release',$pressrelposted->id)}}" class="btn btn-danger btn-sm delete" id="{{$pressrelposted->id}}" data-toggle="tooltip">Delete</a>
                         </td>
                     </tr>
@@ -187,7 +188,6 @@
                 <tfoot>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>

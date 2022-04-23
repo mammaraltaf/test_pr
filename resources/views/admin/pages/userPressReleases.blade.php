@@ -31,7 +31,6 @@
                 <thead>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -46,14 +45,20 @@
                             <td><span class="badge badge-pill badge-info">Draft</span></td>
                         @elseif ($pressrel->status == '1')
                             <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                        @elseif ($pressrel->status == '0')
+                        @elseif ($pressrel->status == '2')
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
 
                         <td>
-                            <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Approve</a>
-                            <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm" id="{{$pressrel->id}}" data-toggle="tooltip">Decline</a>
-
+                            @if(!($pressrel->status == '2'))
+                                <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm"
+                                   id="{{$pressrel->id}}" data-toggle="tooltip">Approve</a>
+                                <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm"
+                                   id="{{$pressrel->id}}" data-toggle="tooltip">Decline</a>
+                            @elseif($pressrel->status == '2')
+                                <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm"
+                                   id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
@@ -61,40 +66,43 @@
                 <tfoot>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
                 </tfoot>
             </table>
-            {{--Draft DataTable--}}
-            <table id="example1" name="draftTable"  class="ui celled table draftTable d-none" style="width:100%">
+            {{--Pending DataTable--}}
+            <table id="example1" name="pendingTable" class="ui celled table pendingTable d-none" style="width:100%">
                 <thead>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($pending as $pressreldraft)
+
+                @foreach($pending as $pressrelPending)
                     <tr>
-                        <td>{{$pressreldraft->title}}</td>
-                        <td>{{$pressrel->description}}</td>
-                        <td><span class="badge badge-pill badge-primary">{{$pressrel->schedule_press_release_date_time}}</span></td>
-                        @if ($pressreldraft->status == '0')
+                        <td>{{$pressrelPending->title}}</td>
+                        <td><span
+                                class="badge badge-pill badge-primary">{{$pressrelPending->schedule_press_release_date_time}}</span>
+                        </td>
+                        @if ($pressrelPending->status == '0')
                             <td><span class="badge badge-pill badge-info">Draft</span></td>
-                        @elseif ($pressreldraft->status == '1')
+                        @elseif ($pressrelPending->status == '1')
                             <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                        @elseif ($pressreldraft->status == '0')
+                        @elseif ($pressrelPending->status == '2')
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
-                            <a href="{{url('/edit-press-release',$pressreldraft->id)}}" class="btn btn-primary btn-sm" id="{{$pressreldraft->id}}" data-toggle="tooltip">Edit</a>
-                            <a href="{{url('/delete-press-release',$pressreldraft->id)}}" class="btn btn-danger btn-sm" id="{{$pressreldraft->id}}" data-toggle="tooltip">Delete</a>
+                            <a href="{{url('/edit-press-release',$pressrelPending->id)}}" class="btn btn-primary btn-sm"
+                               id="{{$pressrelPending->id}}" data-toggle="tooltip">Approve</a>
+                            <a href="{{url('/delete-press-release',$pressrelPending->id)}}"
+                               class="btn btn-danger btn-sm" id="{{$pressrelPending->id}}"
+                               data-toggle="tooltip">Decline</a>
                         </td>
                     </tr>
                 @endforeach
@@ -102,7 +110,6 @@
                 <tfoot>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -110,32 +117,39 @@
                 </tfoot>
             </table>
 
-            <table id="example2" name="postedTable"  class="ui celled table draftTable d-none" style="width:100%">
+            <table id="example2" name="postedTable" class="ui celled table postedTable d-none" style="width:100%">
                 <thead>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($posted as $pressreldraft)
+                @foreach($posted as $pressrelPosted)
                     <tr>
-                        <td>{{$pressreldraft->title}}</td>
-                        <td>{{$pressrel->description}}</td>
-                        <td><span class="badge badge-pill badge-primary">{{$pressrel->schedule_press_release_date_time}}</span></td>
-                        @if ($pressreldraft->status == '0')
+                        <td>{{$pressrelPosted->title}}</td>
+                        <td><span
+                                class="badge badge-pill badge-primary">{{$pressrelPosted->schedule_press_release_date_time}}</span>
+                        </td>
+                        @if ($pressrelPosted->status == '0')
                             <td><span class="badge badge-pill badge-info">Draft</span></td>
-                        @elseif ($pressreldraft->status == '1')
+                        @elseif ($pressrelPosted->status == '1')
                             <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                        @elseif ($pressreldraft->status == '0')
+                        @elseif ($pressrelPosted->status == '2')
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
-                            <a href="{{url('/edit-press-release',$pressreldraft->id)}}" class="btn btn-primary btn-sm" id="{{$pressreldraft->id}}" data-toggle="tooltip">Edit</a>
-                            <a href="{{url('/delete-press-release',$pressreldraft->id)}}" class="btn btn-danger btn-sm" id="{{$pressreldraft->id}}" data-toggle="tooltip">Delete</a>
+                            @if(!($pressrelPosted->status == '2'))
+                                <a href="{{url('/edit-press-release',$pressrelPosted->id)}}"
+                                   class="btn btn-primary btn-sm" id="{{$pressrelPosted->id}}" data-toggle="tooltip">Approve</a>
+                                <a href="{{url('/delete-press-release',$pressrelPosted->id)}}"
+                                   class="btn btn-danger btn-sm" id="{{$pressrelPosted->id}}" data-toggle="tooltip">Decline</a>
+                            @elseif($pressrelPosted->status == '2')
+                                <a href="{{url('/delete-press-release',$pressrelPosted->id)}}"
+                                   class="btn btn-danger btn-sm" id="{{$pressrelPosted->id}}" data-toggle="tooltip">Delete</a>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
@@ -143,7 +157,6 @@
                 <tfoot>
                 <tr>
                     <th>Title</th>
-                    {{--                    <th>Description</th>--}}
                     <th>Schedule Date Time</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -159,61 +172,35 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#example').DataTable();
             // Hide div by setting display to none
-            $("#allTab").click(function(){
+            $("#allTab").click(function () {
                 $(".allTable").removeClass('d-none');
-                $(".postedTable").addClass('d-none');
-                $(".draftTable").addClass('d-none');
                 $(".pendingTable").addClass('d-none');
-                $('#example1').DataTable().destroy();
+                $(".postedTable").addClass('d-none');
                 $('#example').DataTable();
+                $('#example1').DataTable().destroy();
                 $('#example2').DataTable().destroy();
-                $('#example3').DataTable().destroy();
             });
 
-            // Toggle div display
-            $("#pendingTab").click(function(){
+            $("#pendingTab").click(function () {
+                $(".pendingTable").removeClass('d-none');
                 $(".postedTable").addClass('d-none');
                 $(".allTable").addClass('d-none');
-                $(".draftTable").addClass('d-none');
-                $(".pendingTable").removeClass('d-none');
+                $('#example').DataTable().destroy();
+                $('#example1').DataTable();
+                $('#example2').DataTable().destroy();
+            });
+
+            $("#postedTab").click(function () {
+                $(".postedTable").removeClass('d-none');
+                $(".allTable").addClass('d-none');
+                $(".pendingTable").addClass('d-none');
                 $('#example').DataTable().destroy();
                 $('#example1').DataTable().destroy();
                 $('#example2').DataTable();
-                $('#example3').DataTable().destroy();
-
             });
-
-            $("#postedTab").click(function(){
-                $(".postedTable").removeClass('d-none');
-                $(".allTable").addClass('d-none');
-                $(".draftTable").addClass('d-none');
-                $(".pendingTable").addClass('d-none');
-                $('#example').DataTable().destroy();
-                $('#example1').DataTable().destroy();
-                $('#example2').DataTable().destroy();
-                $('#example3').DataTable();
-
-            });
-
-
-
-            /*            $('.delete').on('click', function (event) {
-                            event.preventDefault();
-                            const url = $(this).attr('href');
-                            swal({
-                                title: 'Are you sure?',
-                                text: 'This record and it`s details will be permanantly deleted!',
-                                icon: 'warning',
-                                buttons: ["Cancel", "Yes!"],
-                            }).then(function(value) {
-                                if (value) {
-                                    window.location.href = url;
-                                }
-                            });
-                        });*/
 
         });
     </script>
