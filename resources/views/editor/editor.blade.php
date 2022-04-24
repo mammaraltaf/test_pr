@@ -136,6 +136,7 @@
                 e.preventDefault();
 
                         var data = $('#pressReleaseTable').serialize()
+                        // console.log(data);
                         $.ajax({
                             type: 'POST',
                             url: `{!! route('user.editButtonstore') !!}`,

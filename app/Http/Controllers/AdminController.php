@@ -39,6 +39,7 @@ class AdminController extends Controller
         $allPendingPosted = NewPressRelease::where('user_id','!=',1)->whereIn('status',$pendingPosted)->get();
         $pending = NewPressRelease::where('user_id','!=',1)->where('status','1')->get();
         $posted = NewPressRelease::where('user_id','!=',1)->where('status','2')->get();
+
         return view('admin.pages.userPressReleases',['allPendingPosted'=>$allPendingPosted,'pending'=>$pending,'posted'=>$posted]);
     }
 

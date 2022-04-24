@@ -52,13 +52,13 @@
 
                         <td>
                             @if(!($pressrel->status == '2'))
-                                <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm"
-                                   id="{{$pressrel->id}}" data-toggle="tooltip">Approve</a>
-                                <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm"
-                                   id="{{$pressrel->id}}" data-toggle="tooltip">Decline</a>
+                                <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary approve_btn btn-sm"
+                                   data-id="{{$pressrel->id}}" id="{{$pressrel->id}}" data-toggle="tooltip">Approve</a>
+                                <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger decline_btn btn-sm"
+                                   data-id="{{$pressrel->id}}"  id="{{$pressrel->id}}" data-toggle="tooltip">Decline</a>
                             @elseif($pressrel->status == '2')
-                                <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm"
-                                   id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
+                                <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger delete_btn btn-sm"
+                                   data-id="{{$pressrel->id}}"  id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
                             @endif
                         </td>
                     </tr>
@@ -142,14 +142,14 @@
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
-                            @if(!($pressrelPosted->status == '2'))
-                                <a href="{{url('/edit-press-release',$pressrelPosted->id)}}"
-                                   class="btn btn-primary btn-sm" id="{{$pressrelPosted->id}}" data-toggle="tooltip">Approve</a>
-                                <a href="{{url('/delete-press-release',$pressrelPosted->id)}}"
-                                   class="btn btn-danger btn-sm" id="{{$pressrelPosted->id}}" data-toggle="tooltip">Decline</a>
-                            @elseif($pressrelPosted->status == '2')
-                                <a href="{{url('/delete-press-release',$pressrelPosted->id)}}"
-                                   class="btn btn-danger btn-sm" id="{{$pressrelPosted->id}}" data-toggle="tooltip">Delete</a>
+                            @if(!($pressrel->status == '2'))
+                                <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary approve_btn btn-sm"
+                                   data-id="{{$pressrel->id}}" id="{{$pressrel->id}}" data-toggle="tooltip">Approve</a>
+                                <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger decline_btn btn-sm"
+                                   data-id="{{$pressrel->id}}"  id="{{$pressrel->id}}" data-toggle="tooltip">Decline</a>
+                            @elseif($pressrel->status == '2')
+                                <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger delete_btn btn-sm"
+                                   data-id="{{$pressrel->id}}"  id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
                             @endif
                         </td>
                     </tr>

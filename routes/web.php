@@ -37,10 +37,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* User Profile Routes*/
     Route::get('/profile-view', function () { return view('user.pages.profileView'); })->name('user.profileView');
-    Route::get('/profile-setting', function () { return view('user.pages.profileSetting'); })->name('user.profileSetting');
+//    Route::get('/profile-setting', function () { return view('user.pages.profileSetting'); })->name('user.profileSetting');
     /*User Profile Edit*/
     Route::post('/profile-view', [RegisterController::class,'update'])->name('user.profileViewUpdate');
-//    Route::post('profile-setting', [HomeController::class,'store'])->name('user.profileStore');
 
     /*Admin Routes*/
     Route::get('/admin/home', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.home');

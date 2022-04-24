@@ -585,8 +585,7 @@
                 <!--begin::Actions-->
                 <div class="card-footer d-flex justify-content-end py-6 px-9">
                     <a href="{{route('user.profileView')}}" class="btn btn-light btn-active-light-primary me-2">Discard</a>
-                    {{--                    <input type="submit" class="btn btn-primary" id="edit-user-button" id="savechanges" value="Save Changes"></input>--}}
-                    <button class="btn btn-primary" id="edit-user-button" type="submit" value="Ready to Publish">Save Changes</button>
+                    <button class="btn btn-primary" id="savechanges" type="submit" >Save Changes</button>
 
                 </div>
                 <!--end::Actions-->
@@ -617,6 +616,7 @@
                             url: `{!! route('user.profileViewUpdate') !!}`,
                             data: data
                         }).done(function(data) {
+                            alert(data);
                             swal("User Details Updated Successfully", {
                                 icon: "success",
                             });
