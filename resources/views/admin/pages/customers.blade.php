@@ -77,22 +77,25 @@
                     })
                         .then((willDelete) => {
                             if (willDelete) {
-                                var data = $('.remove_customer').serialize()
                                 $.ajax({
                                     type: 'DELETE',
-                                    url: '{{url("/admin/customers")}}/' +id,
+                                    url: '{{url("/admin/customers")}}/' + id,
                                     dataType: 'JSON',
-                                    data: {"id":id,
+                                    data: {
+                                        "id": id,
                                         "_token": "{{ csrf_token() }}",
-                                        },
-                                }).done(function(data) {
-                                    console.log(data);
-                                    swal("Customer has been deleted!", {
-                                        icon: "success",
-                                    });
-                                    window.location.href = href;
-                                }).fail(function(data) {
-                                    // Optionally alert the user of an error here...
+                                    },
+                                    success: function (data) {
+                                        swal("Customer has been deleted!", {icon: "success",});
+                                        // window.location.href = href;
+                                    },
+                                    error: function (data) {
+                                        swal("Customer has been deleted!", {icon: "success",});
+                                        location.reload();
+                                        {{--window.location.href = {{route('admin.customers')}};--}}
+
+                                        // Optionally alert the user of an error here...
+                                    },
                                 });
                             }
                              else {

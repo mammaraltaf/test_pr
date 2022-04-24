@@ -65,7 +65,7 @@ class AdminController extends Controller
 
     public function removeCustomer($id){
         User::find($id)->delete();
-        return redirect()->back();
+//        return redirect()->back();
     }
 
     public function rssConfigurationindex(){
