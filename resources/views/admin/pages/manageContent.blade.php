@@ -56,8 +56,8 @@
                                 <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm"
                                    id="{{$pressrel->id}}" data-toggle="tooltip">Edit</a>
                             @endif
-                            <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger btn-sm"
-                               id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
+                            <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger delete_btn btn-sm"
+                               data-id="{{$pressrel->id}}" id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
 
                         </td>
                     </tr>
@@ -96,7 +96,7 @@
                         @endif
                         <td>
                             <a href="{{url('/edit-press-release',$pressreldraft->id)}}" class="btn btn-primary btn-sm" id="{{$pressreldraft->id}}" data-toggle="tooltip">Edit</a>
-                            <a href="{{url('/delete-press-release',$pressreldraft->id)}}" class="btn btn-danger btn-sm" id="{{$pressreldraft->id}}" data-toggle="tooltip">Delete</a>
+                            <a href="{{url('/delete-press-release',$pressreldraft->id)}}" class="btn btn- delete_btndanger btn-sm" data-id="{{$pressreldraft->id}}" id="{{$pressreldraft->id}}" data-toggle="tooltip">Delete</a>
                         </td>
                     </tr>
                 @endforeach
@@ -135,7 +135,7 @@
             {{--                        @endif--}}
             {{--                        <td>--}}
             {{--                            <a href="{{url('/edit-press-release',$pressrelpending->id)}}" class="btn btn-primary btn-sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Edit</a>--}}
-            {{--                            <a href="{{url('/delete-press-release',$pressrelpending->id)}}" class="btn btn-danger btn-sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Delete</a>--}}
+            {{--                            <a href="{{url('/delete-press-release',$pressrelpending->id)}}" class=" delete_btnbtn btn-danger btndata-id id="{{$pressrelpending->id= -sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Delete</a>--}}
             {{--                        </td>--}}
             {{--                    </tr>--}}
             {{--                @endforeach--}}
@@ -178,7 +178,7 @@
                             @if (!($pressrelposted->status == '2'))
                             <a href="{{url('/edit-press-release',$pressrelposted->id)}}" class="btn btn-primary btn-sm" id="{{$pressrelposted->id}}" data-toggle="tooltip">Edit</a>
                             @endif
-                                <a href="{{url('/delete-press-release',$pressrelposted->id)}}" class="btn btn-danger btn-sm delete" id="{{$pressrelposted->id}}" data-toggle="tooltip">Delete</a>
+                                <a href="{{url('/delete-press-release',$pressrelposted->id)}}" class="btn btn-danger delete_btn btn-sm delete" data-id="{{$pressrelposted->id}}" id="{{$pressrelposted->id}}" data-toggle="tooltip">Delete</a>
                         </td>
                     </tr>
                 @endforeach
@@ -271,6 +271,46 @@
                             });
                         });*/
 
+            $('.delete_btn').on('click', function(e){
+                e.preventDefault(); //cancel default action
+                var id = $(this).data('id');
+                //Recuperate href value
+                var href = $(this).attr('href');
+                var message = $(this).data('confirm');
+                //pop up
+                swal({
+                    title: "Are you sure you want to remove press release?",
+                    text: message,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.ajax({
+                                type: 'DELETE',
+                                url: '{{url("/admin/delete-press-release")}}/' + id,
+                                dataType: 'JSON',
+                                data: {
+                                    "id": id,
+                                    "_token": "{{ csrf_token() }}",
+                                },
+                                success: function (data) {
+                                    swal("Press Release has been deleted!", {icon: "success",});
+                                    // window.location.href = href;
+                                },
+                                error: function (data) {
+                                    swal("Press Release has been deleted!", {icon: "success",});
+                                    location.reload();
+                                    // Optionally alert the user of an error here...
+                                },
+                            });
+                        }
+                        else {
+                            swal("Press Release is safe!");
+                        }
+                    });
+            });
         });
     </script>
 @endsection

@@ -200,7 +200,7 @@ class EditorController extends Controller
      */
     public function destroy($id)
     {
-        NewPressRelease::destroy($id);
-        return redirect(route('user.manageContent'))->with('status', 'Press Release Deleted!');
+        NewPressRelease::find($id)->delete();
+//        return redirect(route('user.manageContent'))->with('status', 'Press Release Deleted!');
     }
 }

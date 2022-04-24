@@ -29,7 +29,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('edit-press-release/{id}', [EditorController::class,'edit'])->name('user.editPressRelease');
     Route::post('edit-press-release/{id}', [EditorController::class,'update'])->name('user.editPressReleaseUpdate');
     /*Delete Press Release*/
-    Route::get('delete-press-release/{id}', [EditorController::class,'destroy'])->name('user.deletePressRelease');
+    Route::delete('delete-press-release/{id}', [EditorController::class,'destroy'])->name('user.deletePressRelease');
 
     Route::get('manage-content', [HomeController::class,'manageContent'])->name('user.manageContent');
 /*    Route::post('manage-content', [HomeController::class,'store'])->name('user.manageContentStore');*/
@@ -44,6 +44,8 @@ Route::group(['middleware' => 'auth'], function () {
     /*Admin Routes*/
     Route::get('/admin/home', [AdminController::class, 'index'])->middleware('is_admin')->name('admin.home');
     Route::get('/admin/manage-content', [AdminController::class, 'manageContentIndex'])->middleware('is_admin')->name('admin.manageContent');
+    Route::delete('/admin/delete-press-release/{id}', [EditorController::class,'destroy'])->name('admin.deletePressRelease');
+
     Route::get('/admin/user-press-releases', [AdminController::class, 'userPressReleases'])->middleware('is_admin')->name('admin.userPressReleases');
     Route::get('/admin/new-press-release', [EditorController::class,'index'])->middleware('is_admin')->name('admin.newPressRelease');
     Route::post('/admin/new-press-release', [EditorController::class,'adminStore'])->name('admin.newPressReleaseStore');
@@ -61,7 +63,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/edit-press-release', [EditorController::class,'adminEdit'])->middleware('is_admin')->name('admin.editPressRelease');
     Route::post('/admin/edit-press-release/{id}', [EditorController::class,'update'])->name('admin.editPressReleaseUpdate');
     /*Delete Press Release*/
-    Route::get('/admin/delete-press-release/{id}', [EditorController::class,'destroy'])->name('admin.deletePressRelease');
+
 });
 
 /*Frontend Routes*/

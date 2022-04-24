@@ -66,7 +66,7 @@
                     var id = $(this).data('id');
                     //Recuperate href value
                     var href = $(this).attr('href');
-                    var message = $(this).data('confirm');;
+                    var message = $(this).data('confirm');
                     //pop up
                     swal({
                         title: "Are you sure you want to remove this customer?",
