@@ -175,8 +175,10 @@
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
+                            @if (!($pressrelposted->status == '2'))
                             <a href="{{url('/edit-press-release',$pressrelposted->id)}}" class="btn btn-primary btn-sm" id="{{$pressrelposted->id}}" data-toggle="tooltip">Edit</a>
-                            <a href="{{url('/delete-press-release',$pressrelposted->id)}}" class="btn btn-danger btn-sm delete" id="{{$pressrelposted->id}}" data-toggle="tooltip">Delete</a>
+                            @endif
+                                <a href="{{url('/delete-press-release',$pressrelposted->id)}}" class="btn btn-danger btn-sm delete" id="{{$pressrelposted->id}}" data-toggle="tooltip">Delete</a>
                         </td>
                     </tr>
                 @endforeach

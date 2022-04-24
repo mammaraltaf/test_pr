@@ -27,15 +27,15 @@
                 </tr>
                 </thead>
                 <tbody>
+
                 @foreach($customers as $customer)
                     <tr>
                         <td>{{$customer->name}}</td>
                         <td>{{$customer->email}}</td>
                         <td><span class="badge badge-pill badge-primary">{{$customer->country}}</span></td>
-                        {{--<td>{{$customer->country}}</td>--}}
                         <td>{{$customer->timezone}}</td>
                         <td>
-                            <a href="{{url('/',$customer->id)}}" class="btn btn-danger btn-sm" id="{{$customer->id}}" data-toggle="tooltip">Remove</a>
+                            <a href="{{url('/admin/customer-remove',$customer->id)}}" data-id="{{$customer->id}}" class="btn btn-danger remove_customer btn-sm" id="{{$customer->id}}" data-toggle="tooltip">Remove</a>
                         </td>
                     </tr>
                 @endforeach
@@ -61,6 +61,45 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#customerTable').DataTable();
-        });
+                $('.remove_customer').on('click', function(e){
+                    e.preventDefault(); //cancel default action
+                    var id = $(this).data('id');
+                    //Recuperate href value
+                    var href = $(this).attr('href');
+                    var message = $(this).data('confirm');;
+                    //pop up
+                    swal({
+                        title: "Are you sure you want to remove this customer?",
+                        text: message,
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                var data = $('.remove_customer').serialize()
+                                $.ajax({
+                                    type: 'DELETE',
+                                    url: '{{url("/admin/customers")}}/' +id,
+                                    dataType: 'JSON',
+                                    data: {"id":id,
+                                        "_token": "{{ csrf_token() }}",
+                                        },
+                                }).done(function(data) {
+                                    console.log(data);
+                                    swal("Customer has been deleted!", {
+                                        icon: "success",
+                                    });
+                                    window.location.href = href;
+                                }).fail(function(data) {
+                                    // Optionally alert the user of an error here...
+                                });
+                            }
+                             else {
+                                swal("Customer is safe!");
+                            }
+                        });
+                });
+            });
     </script>
 @endsection

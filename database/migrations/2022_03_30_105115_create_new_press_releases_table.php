@@ -19,6 +19,7 @@ class CreateNewPressReleasesTable extends Migration
             $table->longText('description');
             $table->dateTime('schedule_press_release_date_time')->nullable();
             $table->integer('status')->default(0)->nullable();
+            $table->softDeletes();
 
             /*Foreign key - UserId*/
             $table->unsignedBigInteger('user_id');

@@ -53,6 +53,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/payments', [AdminController::class, 'paymentsIndex'])->middleware('is_admin')->name('admin.payments');
     Route::get('/admin/invoices', [AdminController::class, 'invoicesIndex'])->middleware('is_admin')->name('admin.invoices');
     Route::get('/admin/customers', [AdminController::class, 'customersIndex'])->middleware('is_admin')->name('admin.customers');
+    Route::delete('/admin/customers/{id}', [AdminController::class, 'removeCustomer'])->middleware('is_admin')->name('admin.customerDelete');
     Route::get('/admin/delete-user/{id}', [AdminController::class,'deleteUser'])->name('admin.deleteUser');
     Route::get('/admin/rss-configuration', [AdminController::class, 'rssConfigurationindex'])->middleware('is_admin')->name('admin.rssConfiguration');
 

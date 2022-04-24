@@ -73,6 +73,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'country' => $data['country'],
             'timezone' => $data['timezone'],
+            'is_admin'=> 0,
         ]);
     }
     public function edit($id)
@@ -88,7 +89,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'country' => ['required'],
             'timezone' => ['required'],
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+//            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $userId = User::where('id',auth()->user()->id);
@@ -97,6 +98,7 @@ class RegisterController extends Controller
         $user->email = $request->email;
         $user->country = $request->country;
         $user->timezone = $request->timezone;
+        $user->is_admin = 0;
 
         if ($request->hasfile('image')){
             $file = $request->file('image');

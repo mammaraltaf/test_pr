@@ -63,6 +63,11 @@ class AdminController extends Controller
         return view('admin.pages.customers',['customers'=>$customers]);
     }
 
+    public function removeCustomer($id){
+        User::find($id)->delete();
+        return redirect()->back();
+    }
+
     public function rssConfigurationindex(){
         return view('admin.pages.rssConfigurations');
     }

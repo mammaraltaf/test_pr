@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('timezone')->default('UTC-08:00');
             $table->string('avatar')->nullable();
             $table->string('password');
+            $table->softDeletes();
 
             $table->boolean('is_admin')->nullable();
 
