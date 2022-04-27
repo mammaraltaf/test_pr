@@ -189,7 +189,42 @@ class EditorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $editPressRelease = NewPressRelease::find($id);
+        $this->validate($request, [
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+        $description = $request->description;
+        $dom = new \DomDocument();
+        $dom->loadHtml($description, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('img');
+
+        $path = public_path('upload/');
+        if (!file_exists($path)) {
+            mkdir($path, 0777, true);
+        }
+
+        foreach($imageFile as $item => $image){
+            $data = $image->getAttribute('src');
+            list($type, $data) = explode(';', $data);
+
+            list(, $data)      = explode(',', $data);
+            $imgeData = base64_decode($data);
+            $image_name= "/upload/" . time().$item.'.png';
+            $path = public_path() . $image_name;
+            file_put_contents($path, $imgeData);
+            $image->removeAttribute('src');
+            $image->setAttribute('src', $image_name);
+
+        }
+
+        $description = $dom->saveHTML();
+        $editPressRelease->user_id = auth()->user()->id;
+        $editPressRelease->title = $request->title;
+        $editPressRelease->schedule_press_release_date_time = (isset($request->schedule_press_release_date_time)?$request->schedule_press_release_date_time:NULL);
+        $editPressRelease->status = 2;
+        $editPressRelease->description = $description;
+        $editPressRelease->save();
     }
 
     /**

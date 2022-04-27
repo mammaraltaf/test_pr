@@ -6,6 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\NewPressRelease;
+use Illuminate\Support\Facades\Response;
+use Carbon\Carbon;
+use DateTime;
 
 class AdminController extends Controller
 {
@@ -41,6 +44,18 @@ class AdminController extends Controller
         $posted = NewPressRelease::where('user_id','!=',1)->where('status','2')->get();
 
         return view('admin.pages.userPressReleases',['allPendingPosted'=>$allPendingPosted,'pending'=>$pending,'posted'=>$posted]);
+    }
+
+    public function approveUserPost()
+    {
+        NewPressRelease::where('id',$_POST['id'])->update(['status' => 2]);
+        return Response::json(array('success' => 1), 200);
+    }
+
+    public function declineUserPost()
+    {
+        NewPressRelease::where('id',$_POST['id'])->update(['status' => NULL,'deleted_at' => new DateTime]);
+        return Response::json(array('success' => 1), 200);
     }
 
     public function newPressReleaseIndex(){

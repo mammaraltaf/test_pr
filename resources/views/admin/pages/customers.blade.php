@@ -80,19 +80,18 @@
                                 $.ajax({
                                     type: 'DELETE',
                                     url: '{{url("/admin/customers")}}/' + id,
-                                    dataType: 'JSON',
+                                    dataType: 'text',
                                     data: {
                                         "id": id,
                                         "_token": "{{ csrf_token() }}",
                                     },
                                     success: function (data) {
-                                        swal("Customer has been deleted!", {icon: "success",});
+                                        swal("Customer has been deleted!", {icon: "success"});
+
                                         // window.location.href = href;
                                     },
                                     error: function (data) {
-                                        swal("Customer has been deleted!", {icon: "success",});
-                                        location.reload();
-                                        {{--window.location.href = {{route('admin.customers')}};--}}
+                                        swal("There was an error deleting the customer!", {icon: "error"});
 
                                         // Optionally alert the user of an error here...
                                     },

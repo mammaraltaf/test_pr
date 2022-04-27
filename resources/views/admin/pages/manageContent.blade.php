@@ -53,10 +53,10 @@
                         @endif
                         <td>
                             @if(!($pressrel->status == '2'))
-                                <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm"
+                                <a href="{{url('/admin/edit-press-release',$pressrel->id)}}" class="btn btn-primary btn-sm"
                                    id="{{$pressrel->id}}" data-toggle="tooltip">Edit</a>
                             @endif
-                            <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger delete_btn btn-sm"
+                            <a href="{{url('/admin/delete-press-release',$pressrel->id)}}" class="btn btn-danger delete_btn btn-sm"
                                data-id="{{$pressrel->id}}" id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
 
                         </td>
@@ -95,8 +95,8 @@
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
-                            <a href="{{url('/edit-press-release',$pressreldraft->id)}}" class="btn btn-primary btn-sm" id="{{$pressreldraft->id}}" data-toggle="tooltip">Edit</a>
-                            <a href="{{url('/delete-press-release',$pressreldraft->id)}}" class="btn btn- delete_btndanger btn-sm" data-id="{{$pressreldraft->id}}" id="{{$pressreldraft->id}}" data-toggle="tooltip">Delete</a>
+                            <a href="{{url('/admin/edit-press-release',$pressreldraft->id)}}" class="btn btn-primary btn-sm" id="{{$pressreldraft->id}}" data-toggle="tooltip">Edit</a>
+                            <a href="{{url('/admin/delete-press-release',$pressreldraft->id)}}" class="btn btn- delete_btndanger btn-sm" data-id="{{$pressreldraft->id}}" id="{{$pressreldraft->id}}" data-toggle="tooltip">Delete</a>
                         </td>
                     </tr>
                 @endforeach
@@ -134,8 +134,8 @@
             {{--                            <td><span class="badge badge-pill badge-success">Active</span></td>--}}
             {{--                        @endif--}}
             {{--                        <td>--}}
-            {{--                            <a href="{{url('/edit-press-release',$pressrelpending->id)}}" class="btn btn-primary btn-sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Edit</a>--}}
-            {{--                            <a href="{{url('/delete-press-release',$pressrelpending->id)}}" class=" delete_btnbtn btn-danger btndata-id id="{{$pressrelpending->id= -sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Delete</a>--}}
+            {{--                            <a href="{{url('/admin/edit-press-release',$pressrelpending->id)}}" class="btn btn-primary btn-sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Edit</a>--}}
+            {{--                            <a href="{{url('/admin/delete-press-release',$pressrelpending->id)}}" class=" delete_btnbtn btn-danger btndata-id id="{{$pressrelpending->id= -sm" id="{{$pressrelpending->id}}" data-toggle="tooltip">Delete</a>--}}
             {{--                        </td>--}}
             {{--                    </tr>--}}
             {{--                @endforeach--}}
@@ -176,9 +176,9 @@
                         @endif
                         <td>
                             @if (!($pressrelposted->status == '2'))
-                            <a href="{{url('/edit-press-release',$pressrelposted->id)}}" class="btn btn-primary btn-sm" id="{{$pressrelposted->id}}" data-toggle="tooltip">Edit</a>
+                            <a href="{{url('/admin/edit-press-release',$pressrelposted->id)}}" class="btn btn-primary btn-sm" id="{{$pressrelposted->id}}" data-toggle="tooltip">Edit</a>
                             @endif
-                                <a href="{{url('/delete-press-release',$pressrelposted->id)}}" class="btn btn-danger delete_btn btn-sm delete" data-id="{{$pressrelposted->id}}" id="{{$pressrelposted->id}}" data-toggle="tooltip">Delete</a>
+                                <a href="{{url('/admin/delete-press-release',$pressrelposted->id)}}" class="btn btn-danger delete_btn btn-sm delete" data-id="{{$pressrelposted->id}}" id="{{$pressrelposted->id}}" data-toggle="tooltip">Delete</a>
                         </td>
                     </tr>
                 @endforeach

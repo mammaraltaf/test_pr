@@ -114,7 +114,7 @@
                         var data = $('#pressReleaseTable').serialize()+'&complete_status=completed'
                         $.ajax({
                             type: 'POST',
-                            url: `{!! route('user.newPressReleaseStore') !!}`,
+                            url: `{!! route('user.editPressReleaseUpdate') !!}`,
                             data: data
                         }).done(function(data) {
                             swal("Press Release Posted for Admin Approval!", {

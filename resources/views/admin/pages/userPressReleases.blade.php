@@ -52,9 +52,9 @@
 
                         <td>
                             @if(!($pressrel->status == '2'))
-                                <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary approve_btn btn-sm"
+                                <a href="{{url('/admin/user-press-releases')}}" class="btn btn-primary btn-sm approveUserPost"
                                    data-id="{{$pressrel->id}}" id="{{$pressrel->id}}" data-toggle="tooltip">Approve</a>
-                                <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger decline_btn btn-sm"
+                                <a href="{{url('/admin/user-press-releases',$pressrel->id)}}" class="btn btn-danger decline_btn btn-sm"
                                    data-id="{{$pressrel->id}}"  id="{{$pressrel->id}}" data-toggle="tooltip">Decline</a>
                             @elseif($pressrel->status == '2')
                                 <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger delete_btn btn-sm"
@@ -99,9 +99,9 @@
                             <td><span class="badge badge-pill badge-success">Active</span></td>
                         @endif
                         <td>
-                            <a href="{{url('/edit-press-release',$pressrelPending->id)}}" class="btn btn-primary btn-sm"
-                               id="{{$pressrelPending->id}}" data-toggle="tooltip">Approve</a>
-                            <a href="{{url('/delete-press-release',$pressrelPending->id)}}"
+                            <a href="{{url('/admin/user-press-releases')}}" class="btn btn-primary btn-sm approveUserPost"
+                               data-id="{{$pressrelPending->id}}" id="{{$pressrelPending->id}}" data-toggle="tooltip">Approve</a>
+                            <a href="{{url('/admin/user-press-releases',$pressrelPending->id)}}"
                                class="btn btn-danger btn-sm" id="{{$pressrelPending->id}}"
                                data-toggle="tooltip">Decline</a>
                         </td>
@@ -143,9 +143,9 @@
                         @endif
                         <td>
                             @if(!($pressrel->status == '2'))
-                                <a href="{{url('/edit-press-release',$pressrel->id)}}" class="btn btn-primary approve_btn btn-sm"
+                                <a href="{{url('/admin/user-press-releases')}}" class="btn btn-primary btn-sm approveUserPost"
                                    data-id="{{$pressrel->id}}" id="{{$pressrel->id}}" data-toggle="tooltip">Approve</a>
-                                <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger decline_btn btn-sm"
+                                <a href="{{url('/admin/user-press-releases',$pressrel->id)}}" class="btn btn-danger decline_btn btn-sm"
                                    data-id="{{$pressrel->id}}"  id="{{$pressrel->id}}" data-toggle="tooltip">Decline</a>
                             @elseif($pressrel->status == '2')
                                 <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger delete_btn btn-sm"
@@ -202,6 +202,87 @@
                 $('#example1').DataTable().destroy();
                 $('#example2').DataTable();
             });
+
+            $(document).ready(function () {
+                $(document).on('click','.approveUserPost',function (e) {
+                    e.preventDefault();
+                    var id = $(this).data('id');
+                    swal({
+                        title: "Are you sure?",
+                        text: "You want to approve this post?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "{{route('admin.userPressReleasesApprove')}}",
+                                    dataType: 'json',
+                                    data: {
+                                        id:id,
+                                    },
+                                    success: function (data) {
+                                        swal("Successfully posted on 500newswire!!!", {
+                                            icon: "success",
+                                            timer: 10000,
+                                        });
+                                        location.reload();
+                                    },
+                                    error: function (data){
+                                        swal("There's a problem while posting on 500newswire!!!", {
+                                            icon: "error",
+                                        });
+                                    }
+                                });
+
+                            } else {
+                                swal("Not Posted!");
+                            }
+                        });
+                });
+
+                $(document).on('click','.decline_btn',function (e) {
+                    e.preventDefault();
+                    var id = $(this).data('id');
+                    swal({
+                        title: "Are you sure?",
+                        text: "You want to decline this post?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "{{route('admin.userPressReleasesDecline')}}",
+                                    dataType: 'json',
+                                    data: {
+                                        id:id,
+                                    },
+                                    success: function (data) {
+                                        swal("Successfully declined user release!!!", {
+                                            icon: "success",
+                                        });
+                                        location.reload();
+                                    },
+                                    error: function (data){
+                                        swal("There's a problem while declining user press release!!!", {
+                                            icon: "error",
+                                        });
+                                    }
+                                });
+
+                            } else {
+                                swal("Post is Safe!");
+                            }
+                        });
+                });
+
+            });
+
 
         });
     </script>

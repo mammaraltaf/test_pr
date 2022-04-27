@@ -20,7 +20,7 @@
     </div>
     <br>
     <!--end::Header-->
-    <form method="post" action="" id="pressReleaseTable" enctype="multipart/form-data">
+    <form method="post" action="{{route('admin.editPressReleaseUpdate')}}" id="pressReleaseTable" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
@@ -101,9 +101,15 @@
         });
 
         $(document).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             $("#ready-to-publish").click(function(e) {
                 e.preventDefault();
-
+                console.log($(this).data("#id"));
                 swal({
                     title: "Are you sure?",
                     text: "Save Press Release?",
@@ -111,18 +117,20 @@
                     buttons: true,
                 }).then((willDelete) => {
                     if (willDelete) {
-                        var data = $('#pressReleaseTable').serialize()+'&complete_status=completed'
+                        var data = $('#pressReleaseTable').serialize()
+                        console.log(data);
                         $.ajax({
                             type: 'POST',
-                            url: `{!! route('user.newPressReleaseStore') !!}`,
+                            url: `{!! route('admin.editPressReleaseUpdate') !!}`,
                             data: data
                         }).done(function(data) {
                             swal("Press Release Posted for Admin Approval!", {
                                 icon: "success",
                             });
-                            let pageRedirectUrl = `{!! url('manage-content') !!}`;
+                            let pageRedirectUrl = `{!! url('admin/manage-content') !!}`;
                             window.location.href = pageRedirectUrl;
                         }).fail(function(data) {
+                            // console.log(data);
                             // Optionally alert the user of an error here...
                         });
 
