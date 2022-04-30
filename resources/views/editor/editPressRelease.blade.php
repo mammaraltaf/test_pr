@@ -52,8 +52,8 @@
 
             </div>
             <div class="form-group text-center">
-                <button class="btn btn-info btn-sm" type="submit" value="Preview">Preview</button>
-                <button class="btn btn-success btn-sm" id="ready-to-publish" type="submit" value="Ready to Publish">Ready to Publish</button>
+                <button class="btn btn-info btn-sm" value="Preview">Preview</button>
+                <button class="btn btn-success btn-sm" id="ready-to-publish" value="Ready to Publish">Ready to Publish</button>
             </div>
         </div>
     </form>
@@ -111,10 +111,10 @@
                     buttons: true,
                 }).then((willDelete) => {
                     if (willDelete) {
-                        var data = $('#pressReleaseTable').serialize()+'&complete_status=completed'
+                        var data = $('#pressReleaseTable').serialize();
                         $.ajax({
                             type: 'POST',
-                            url: `{!! route('user.editPressReleaseUpdate') !!}`,
+                            {{--url: `{!! route('user.editPressReleaseUpdate') !!}`+'/'+data.id,--}}
                             data: data
                         }).done(function(data) {
                             swal("Press Release Posted for Admin Approval!", {

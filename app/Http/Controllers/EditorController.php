@@ -127,6 +127,7 @@ class EditorController extends Controller
 
     public function editButtonstore(Request $request)
     {
+        dd($request->all());
         try {
             $newPressRelease = $request->all();
             $rules = array(
@@ -175,10 +176,10 @@ class EditorController extends Controller
         return view('editor.editPressRelease', ['editPressRelease' => $editPressRelease]);
     }
 
-    public function adminEdit($id){
-        $editPressRelease = NewPressRelease::find($id);
-        return view('editor.editAdminPressRelease', ['editPressRelease' => $editPressRelease]);
-    }
+//    public function adminEdit($id){
+//        $editPressRelease = NewPressRelease::find($id);
+//        return view('editor.editAdminPressRelease', ['editPressRelease' => $editPressRelease]);
+//    }
 
     /**
      * Update the specified resource in storage.
@@ -187,6 +188,8 @@ class EditorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    /*Update User Press Release*/
     public function update(Request $request, $id)
     {
         $editPressRelease = NewPressRelease::find($id);
@@ -222,9 +225,18 @@ class EditorController extends Controller
         $editPressRelease->user_id = auth()->user()->id;
         $editPressRelease->title = $request->title;
         $editPressRelease->schedule_press_release_date_time = (isset($request->schedule_press_release_date_time)?$request->schedule_press_release_date_time:NULL);
-        $editPressRelease->status = 2;
+
+        /*If Admin Edit Post and it will be posted to the website*/
+        if (Auth::user()->is_admin == 1){
+            $editPressRelease->status = 2;
+        }
+        /*If User Editied and Press Ready to Publish then it goes for admin approval*/
+        else{
+        $editPressRelease->status = 1;
+        }
+
         $editPressRelease->description = $description;
-        $editPressRelease->save();
+        $editPressRelease->update();
     }
 
     /**

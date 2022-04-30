@@ -102,8 +102,15 @@
             enableTime: true,
             dateFormat: "Y-m-d H:i",
         });
+        $("#pressReleaseTable").validate({
+            rules: {
+                title: "required",
+                description: "required",
+            },
 
+        });
         $(document).ready(function() {
+
             $("#ready-to-publish").click(function(e) {
                 e.preventDefault();
 

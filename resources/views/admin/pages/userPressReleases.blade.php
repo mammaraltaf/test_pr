@@ -57,7 +57,7 @@
                                 <a href="{{url('/admin/user-press-releases',$pressrel->id)}}" class="btn btn-danger decline_btn btn-sm"
                                    data-id="{{$pressrel->id}}"  id="{{$pressrel->id}}" data-toggle="tooltip">Decline</a>
                             @elseif($pressrel->status == '2')
-                                <a href="{{url('/delete-press-release',$pressrel->id)}}" class="btn btn-danger delete_btn btn-sm"
+                                <a href="{{url('admin/user-press-releases-delete',$pressrel->id)}}" class="btn btn-danger delete_btn btn-sm"
                                    data-id="{{$pressrel->id}}"  id="{{$pressrel->id}}" data-toggle="tooltip">Delete</a>
                             @endif
                         </td>
@@ -270,6 +270,43 @@
                                     },
                                     error: function (data){
                                         swal("There's a problem while declining user press release!!!", {
+                                            icon: "error",
+                                        });
+                                    }
+                                });
+
+                            } else {
+                                swal("Post is Safe!");
+                            }
+                        });
+                });
+                $(document).on('click','.delete_btn',function (e) {
+                    e.preventDefault();
+                    var id = $(this).data('id');
+                    swal({
+                        title: "Are you sure?",
+                        text: "You want to delete this post?",
+                        icon: "warning",
+                        buttons: true,
+                        dangerMode: true,
+                    })
+                        .then((willDelete) => {
+                            if (willDelete) {
+                                $.ajax({
+                                    type: "POST",
+                                    url: "{{route('admin.userPressReleasesDelete')}}",
+                                    dataType: 'json',
+                                    data: {
+                                        id:id,
+                                    },
+                                    success: function (data) {
+                                        swal("Successfully Deleted user release!!!", {
+                                            icon: "success",
+                                        });
+                                        location.reload();
+                                    },
+                                    error: function (data){
+                                        swal("There's a problem while Deleting user press release!!!", {
                                             icon: "error",
                                         });
                                     }

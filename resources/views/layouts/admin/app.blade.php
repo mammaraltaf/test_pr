@@ -106,7 +106,7 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 {{--<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>--}}
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
             $.ajaxSetup({

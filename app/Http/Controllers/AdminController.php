@@ -23,7 +23,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('adminHome');
+        $allPosts = NewPressRelease::where('user_id', Auth::user()->id)->count();
+        $draftPosts = NewPressRelease::where('user_id', Auth::user()->id)->where('status', 0)->count();
+        $pendingPosts = NewPressRelease::where('user_id', Auth::user()->id)->where('status', 1)->count();
+        $postedPosts = NewPressRelease::where('user_id', Auth::user()->id)->where('status', 2)->count();
+        return view('adminHome', ['allPosts' => $allPosts, 'draftPosts' => $draftPosts, 'pendingPosts' => $pendingPosts, 'postedPosts' => $postedPosts]);
     }
 
     public function manageContentIndex(){
@@ -54,6 +58,10 @@ class AdminController extends Controller
 
     public function declineUserPost()
     {
+        NewPressRelease::where('id',$_POST['id'])->update(['status' => NULL,'deleted_at' => new DateTime]);
+        return Response::json(array('success' => 1), 200);
+    }
+    public function deleteUserPost(){
         NewPressRelease::where('id',$_POST['id'])->update(['status' => NULL,'deleted_at' => new DateTime]);
         return Response::json(array('success' => 1), 200);
     }

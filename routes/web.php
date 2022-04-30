@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin/user-press-releases', [AdminController::class, 'userPressReleases'])->middleware('is_admin')->name('admin.userPressReleases');
     Route::post('/admin/user-press-releases', [AdminController::class, 'approveUserPost'])->middleware('is_admin')->name('admin.userPressReleasesApprove');
     Route::post('/admin/user-press-releases-decline', [AdminController::class, 'declineUserPost'])->middleware('is_admin')->name('admin.userPressReleasesDecline');
-//    Route::post()
+    Route::post('/admin/user-press-releases-delete', [AdminController::class, 'deleteUserPost'])->middleware('is_admin')->name('admin.userPressReleasesDelete');
 
 
     Route::get('/admin/new-press-release', [EditorController::class,'index'])->middleware('is_admin')->name('admin.newPressRelease');
@@ -60,7 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     /*Edit Press Release*/
-    Route::get('/admin/edit-press-release/{id}', [EditorController::class,'adminEdit'])->middleware('is_admin')->name('admin.editPressRelease');
+    Route::get('/admin/edit-press-release/{id}', [EditorController::class,'edit'])->middleware('is_admin')->name('admin.editPressRelease');
     Route::post('/admin/edit-press-release/{id}', [EditorController::class,'update'])->middleware('is_admin')->name('admin.editPressReleaseUpdate');
     /*Delete Press Release*/
     Route::delete('/admin/delete-press-release/{id}', [EditorController::class,'destroy'])->name('admin.deletePressRelease');
